@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">login1</string>
+    <string name="prefLoginstate">checkBox</string>
+    <string name="title_activity_medicine_detail">MedicineDetail</string>
+</resources>

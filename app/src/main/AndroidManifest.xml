@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.login1">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:icon,android:theme">
+        <activity android:name="com.jd3z.userinfo.userinfo"></activity>
+        <activity android:name=".MedicineDetail" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".confirmpassword" />
+        <activity android:name=".confirmemail" />
+        <activity android:name=".sign_up" />
+        <activity android:name="medicineinfo.MedicineInfoAct" />
+        <activity android:name="com.app.camera.scan1" />
+        <activity android:name="com.example.calendar_test01.calendarMain" />
+        <activity android:name=".LOGO">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jd3z.userinfo.userinfo"
+    android:background="#FFF0D4"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:layout_marginTop="20sp">
+        <TextView
+            android:id="@+id/t1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="姓名:"
+            android:layout_marginLeft="20sp"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:id="@+id/txt姓名"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="王大明"
+            android:layout_marginLeft="10sp"
+
+            android:layout_gravity="center"
+
+            android:textColor="#3B3B3B"
+            android:textStyle="italic"
+
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_below="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:layout_marginTop="20sp">
+        <TextView
+            android:id="@+id/t2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="帳號:"
+            android:layout_marginLeft="20sp"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:id="@+id/txt信箱"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="yahyy1598"
+            android:layout_marginLeft="10sp"
+
+            android:layout_gravity="center"
+
+            android:textColor="#3B3B3B"
+            android:textStyle="italic"
+
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll3"
+        android:layout_below="@+id/ll2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:layout_marginTop="20sp">
+        <TextView
+            android:id="@+id/t3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="目前服藥數量："
+            android:layout_marginLeft="20sp"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:id="@+id/txt服藥數量"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="0"
+            android:layout_marginLeft="10sp"
+
+            android:layout_gravity="center"
+
+            android:textColor="#3B3B3B"
+            android:textStyle="italic"
+
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll4"
+        android:layout_below="@+id/ll3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:orientation="horizontal"
+        android:layout_marginTop="20sp">
+        <TextView
+            android:id="@+id/t4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="已服用完畢藥單:"
+            android:layout_marginLeft="20sp"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+
+            />
+
+
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/ll5"
+        android:layout_below="@+id/ll4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_marginTop="20sp">
+    <TextView
+        android:id="@+id/txt服用完畢"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="聖安健保-神經內科科診"
+        android:layout_marginLeft="10sp"
+
+
+        android:layout_gravity="center"
+
+        android:textColor="#3B3B3B"
+        android:textStyle="italic"
+
+        />
+
+        <TextView
+            android:id="@+id/txt服用完畢2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text=""
+            android:layout_marginLeft="10sp"
+            android:layout_below="@+id/txt服用完畢"
+            android:layout_marginTop="15sp"
+
+
+            android:layout_gravity="center"
+
+            android:textColor="#3B3B3B"
+            android:textStyle="italic"
+
+            />
+
+        <TextView
+            android:id="@+id/txt服用完畢3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text=""
+            android:layout_marginLeft="10sp"
+            android:layout_below="@+id/txt服用完畢2"
+            android:layout_marginTop="15sp"
+
+
+            android:layout_gravity="center"
+
+            android:textColor="#3B3B3B"
+            android:textStyle="italic"
+
+            />
+
+        <TextView
+            android:id="@+id/txt服用完畢4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="2019-10-08 內科"
+            android:layout_marginLeft="10sp"
+            android:layout_below="@+id/txt服用完畢3"
+            android:layout_marginTop="15sp"
+            android:visibility="invisible"
+
+            android:layout_gravity="center"
+
+            android:textColor="#3B3B3B"
+            android:textStyle="italic"
+
+            />
+
+        <TextView
+            android:id="@+id/txt服用完畢5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="2019-10-08 內科"
+            android:layout_marginLeft="10sp"
+            android:layout_below="@+id/txt服用完畢4"
+            android:layout_marginTop="15sp"
+
+            android:visibility="invisible"
+            android:layout_gravity="center"
+
+            android:textColor="#3B3B3B"
+            android:textStyle="italic"
+
+            />
+
+        <TextView
+            android:id="@+id/txt服用完畢6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="2019-10-08 內科"
+            android:layout_marginLeft="10sp"
+            android:layout_below="@+id/txt服用完畢5"
+            android:layout_marginTop="15sp"
+            android:visibility="invisible"
+
+            android:layout_gravity="center"
+
+            android:textColor="#3B3B3B"
+            android:textStyle="italic"
+
+            />
+
+        <TextView
+            android:id="@+id/txt服用完畢7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="2019-10-08 內科"
+            android:layout_marginLeft="10sp"
+            android:layout_below="@+id/txt服用完畢6"
+            android:layout_marginTop="15sp"
+            android:visibility="invisible"
+
+            android:layout_gravity="center"
+
+            android:textColor="#3B3B3B"
+            android:textStyle="italic"
+
+            />
+
+        <TextView
+            android:id="@+id/txt服用完畢8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="2019-10-08 內科"
+            android:layout_marginLeft="10sp"
+            android:layout_below="@+id/txt服用完畢7"
+            android:layout_marginTop="15sp"
+android:visibility="invisible"
+
+            android:layout_gravity="center"
+
+            android:textColor="#3B3B3B"
+            android:textStyle="italic"
+
+            />
+    </RelativeLayout>
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/ll6"-->
+<!--       android:layout_below="@+id/ll5"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_weight="1"-->
+<!--        android:orientation="horizontal"-->
+<!--        >-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/pen"-->
+<!--            android:layout_width="80sp"-->
+<!--            android:layout_height="80sp"-->
+<!--            android:background="@drawable/pen"-->
+
+<!--            android:layout_marginRight="15sp"-->
+<!--            />-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/pen"-->
+<!--            android:text="修改密碼"-->
+
+<!--            android:textSize="25sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="#0A0A0A"-->
+<!--            android:layout_marginRight="15sp"-->
+<!--           />-->
+<!--    </RelativeLayout>-->
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="#FFF0D4"
+
+        >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnM首頁"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/common_google_signin_btn_text_dark_disabled"
+                android:text="首頁"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnM藥單"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/common_google_signin_btn_text_dark_disabled"
+                android:text="藥單"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnM行事曆"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/common_google_signin_btn_text_dark_disabled"
+                android:text="行事曆"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnM會員"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/common_google_signin_btn_text_dark_disabled"
+                android:text="會員"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnMNews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/common_google_signin_btn_text_dark_disabled"
+                android:text="News"
+                android:textSize="20sp" />
+
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>

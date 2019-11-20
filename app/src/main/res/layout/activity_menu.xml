@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF7E8"
+    android:orientation="vertical"
+    tools:context=".MenuActivity">
+
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="254dp"
+        android:layout_height="63dp"
+        android:gravity="center_horizontal"
+        android:text="I-Medicine"
+        android:textColor="#0000DB"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-3dp" />
+
+    <ImageButton
+        android:id="@+id/btn我的資訊"
+        android:layout_width="137dp"
+        android:layout_height="121dp"
+        android:layout_below="@id/txtTitle"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+    <ImageButton
+        android:id="@+id/btn藥袋掃描"
+        android:layout_width="137dp"
+        android:layout_height="121dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_toRightOf="@id/btn藥袋掃描"
+        android:background="@drawable/camera"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn藥袋掃描"
+        android:layout_marginStart="64dp"
+        android:gravity="center_horizontal"
+        android:text="藥袋掃描"
+        android:textColor="#0000FF"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn我的資訊" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn藥袋掃描"
+        android:layout_marginEnd="32dp"
+        android:gravity="center_horizontal"
+        android:text="我的資訊"
+        android:textColor="#0000FF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn藥袋掃描" />
+
+    <ImageButton
+        android:id="@+id/btnNews"
+        android:layout_width="137dp"
+        android:layout_height="121dp"
+        android:layout_below="@id/btn藥袋掃描"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/news"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn藥袋掃描"
+        android:layout_marginStart="64dp"
+        android:gravity="center_horizontal"
+        android:text="藥單資料"
+        android:textColor="#0000FF"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnNews" />
+
+    <ImageButton
+        android:id="@+id/btn藥單資料"
+        android:layout_width="137dp"
+        android:layout_height="121dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/medicineinfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn藥袋掃描"
+        android:layout_marginEnd="52dp"
+        android:gravity="center_horizontal"
+        android:text="News"
+        android:textColor="#0000FF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn藥單資料" />
+
+    <ImageButton
+        android:id="@+id/btn服藥行事曆"
+        android:layout_width="137dp"
+        android:layout_height="121dp"
+        android:layout_below="@id/btn我的資訊"
+        android:layout_marginTop="388dp"
+        android:background="@drawable/date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn藥袋掃描"
+        android:gravity="center_horizontal"
+        android:text="服藥行事曆"
+        android:textColor="#0000FF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn服藥行事曆"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="會員登出"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"
+        app:layout_constraintStart_toEndOf="@+id/txtTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

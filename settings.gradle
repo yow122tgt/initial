@@ -1,0 +1,2 @@
+include ':app', 'camera', 'Calendar_test01'
+rootProject.name='login1'
