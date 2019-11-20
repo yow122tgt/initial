@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:background="#4F4F4F"
     tools:context=".confirmemail">
-
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
     <EditText
         android:id="@+id/editemail"
         android:layout_width="306dp"
