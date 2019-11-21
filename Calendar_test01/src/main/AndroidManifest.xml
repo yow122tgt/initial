@@ -53,18 +53,6 @@
             <action android:name="com.dbjtech.myservice" />
             </intent-filter>
         </service>
-        <service
-            android:name=".RingtonePlayingService_2"
-            android:enabled="true"
-            android:exported="true"/>
-        <service
-            android:name=".RingtonePlayingService_3"
-            android:enabled="true"
-            android:exported="true"/>
-        <service
-            android:name=".RingtonePlayingService_4"
-            android:enabled="true"
-            android:exported="true"/>
     </application>
 
 </manifest>

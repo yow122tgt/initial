@@ -11,8 +11,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,12 +22,14 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 
+import static android.content.ContentValues.TAG;
+
 public class timePicker_4 extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_time_picker_3);
+        setContentView(R.layout.activity_time_picker_4);
         initialComponent();
     }
 
@@ -42,8 +46,8 @@ public class timePicker_4 extends Activity {
         alarm_on.setOnClickListener(alarm_on_Click);
         alarm_off.setOnClickListener(alarm_off_Click);
 
-        SharedPreferences table_4=getSharedPreferences("timePicker_4", Activity.MODE_PRIVATE);
-        data_4 =table_4.getString("KEY_4","00:00");
+        SharedPreferences table=getSharedPreferences("timePicker_4", Activity.MODE_PRIVATE);
+        data_4 =table.getString("KEY_4","00:00");
         set_alarm_text("Alarm set to :"+ data_4 );
 
     }
@@ -76,22 +80,59 @@ public class timePicker_4 extends Activity {
             set_alarm_text("Alarm set to :"+hour_string + ":" + minute_string);
 
 
-            my_intent.putExtra("extra","alarm on");
 
-            pending_intent = PendingIntent.getBroadcast(timePicker_4.this,0,
-                    my_intent,PendingIntent.FLAG_UPDATE_CURRENT);
+            bund.putString("extra","alarm on");
+            my_intent.putExtras( bund);
+//--------------------------------------------------------------------------------------------------------------
 
-            alarm_manager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),
-                    pending_intent);
+            setAlarm();
+//-----------------------------------------------------------------------
+
         }
     };
+
+    private void setAlarm() {
+        alarm_manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        pending_intent = PendingIntent.getBroadcast(timePicker_4.this,0, my_intent,0);
+
+        alarm_manager.setRepeating(AlarmManager.RTC,calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pending_intent);
+
+        //sendBroadcast(my_intent);
+    }
+
     public View.OnClickListener alarm_off_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             set_alarm_text("Alarm off!");
-//            alarm_manager.cancel(pending_intent);
-            my_intent.putExtra("extra","alarm off");
-            sendBroadcast(my_intent);
+
+            bund.putString("extra","alarm off");
+            my_intent.putExtras(bund);
+
+            pending_intent = PendingIntent.getBroadcast(timePicker_4.this, 0, my_intent, PendingIntent.FLAG_NO_CREATE);
+            if (pending_intent != null){
+                Log.i("lily","cancel alarm");
+                alarm_manager.cancel(pending_intent);
+                sendBroadcast(my_intent);
+                Log.e("55555","8888888");
+
+                try {
+                    if (media_song.isPlaying()) {
+                        media_song.stop();
+                    }
+                    media_song.release();
+                } catch (IllegalStateException e) {
+                    Log.e(TAG, "stopOnlineMedia error=" + e.getMessage());
+                }
+
+
+            }else{
+                Log.i("lily","sender == null");
+            }
+
+
+            //   alarm_manager.cancel(pending_intent);
+
         }
     };
 
@@ -107,4 +148,8 @@ public class timePicker_4 extends Activity {
     public TextView update_text;
     public Context context;
     public PendingIntent pending_intent;
+    private static timePicker_4 inst;
+    public static MediaPlayer media_song;
+    public Bundle bund = new Bundle();
+    android.widget.TimePicker timePicker;
 }
