@@ -88,7 +88,7 @@ public class Alarm_Receiver_4 extends BroadcastReceiver {
 
 
             Notification message = new Notification.Builder(context)
-                    .setContentTitle("睡前該吃藥囉")
+                    .setContentTitle("睡前該吃藥囉 ")
                     .setContentText("訊息來自 I-Medicine")
                     .setContentIntent(pending_intent_main_activity)
                     .setAutoCancel(true)
