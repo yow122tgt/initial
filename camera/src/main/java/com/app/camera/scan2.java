@@ -113,6 +113,14 @@ public class scan2 extends AppCompatActivity {
                 dialog.show();
             }
         });
+
+        mBtnBack = findViewById(R.id.btnBack);
+        mBtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(scan2.this, scan1.class));
+            }
+        });
         //runCloudTextRecognition();
         traceOn();
         setPicToImageView();
@@ -269,7 +277,7 @@ public class scan2 extends AppCompatActivity {
                 .onSameThread()
                 .check();
     }
-//test push
+
     public void setRecognizedText(String p) {
         if (p.indexOf("藥品名稱") != -1) {
             nameText = p.substring(p.indexOf("藥品名稱") + "藥物名稱".length(),
@@ -304,7 +312,7 @@ public class scan2 extends AppCompatActivity {
     EditText mEdtName, mEdtDays, mEdtIndication, mEdtDosage, mEdtSideEffect;
     ImageView mImageCaptured;
     TextView mTxtResult;
-    Button mBtnApply;
+    Button mBtnApply, mBtnBack;
 
     public void traceOn() {
         mEdtName.setText("RIVOTRIL 0.5MG 利福全");
