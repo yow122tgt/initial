@@ -279,7 +279,7 @@ public class scan2 extends AppCompatActivity {
             String regEx = "[^0-9]";
             Pattern pattern = Pattern.compile(regEx);
             Matcher m = pattern.matcher(paragraphText);
-            daysText = paragraphText;
+            daysText = m.toString();
             mEdtDays.setText(daysText);
         } else if (p.indexOf("用法用量") != -1) {
             dosageText = p.substring(p.indexOf("用法") + "用法用量".length(),
