@@ -269,7 +269,7 @@ public class scan2 extends AppCompatActivity {
                 .onSameThread()
                 .check();
     }
-
+//test push
     public void setRecognizedText(String p) {
         if (p.indexOf("藥品名稱") != -1) {
             nameText = p.substring(p.indexOf("藥品名稱") + "藥物名稱".length(),
