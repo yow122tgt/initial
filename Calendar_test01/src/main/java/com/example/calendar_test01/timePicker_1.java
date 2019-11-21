@@ -26,7 +26,7 @@ import java.util.Objects;
 
 import static android.content.ContentValues.TAG;
 
-public class timePicker_1 extends AppCompatActivity {
+public class timePicker_1 extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,10 @@ public class timePicker_1 extends AppCompatActivity {
         alarm_off.setOnClickListener(alarm_off_Click);
 
         SharedPreferences table=getSharedPreferences("timePicker_1", Activity.MODE_PRIVATE);
-        data_1 =table.getString("KEY_1","00:00");
+        data_1 =table.getString("KEY_1","OFF");
         set_alarm_text("Alarm set to :"+ data_1 );
+
+        media_song = MediaPlayer.create(timePicker_1.this,R.raw.alarm);
 
     }
     public View.OnClickListener alarm_on_Click =new View.OnClickListener() {
@@ -79,12 +81,15 @@ public class timePicker_1 extends AppCompatActivity {
 
 
 
+
             set_alarm_text("Alarm set to :"+hour_string + ":" + minute_string);
 
 
 
             bund.putString("extra","alarm on");
             my_intent.putExtras( bund);
+
+
 //--------------------------------------------------------------------------------------------------------------
 
             setAlarm();
@@ -111,6 +116,7 @@ public class timePicker_1 extends AppCompatActivity {
             bund.putString("extra","alarm off");
             my_intent.putExtras(bund);
 
+
             pending_intent = PendingIntent.getBroadcast(timePicker_1.this, 0, my_intent, PendingIntent.FLAG_NO_CREATE);
             if (pending_intent != null){
                 Log.i("lily","cancel alarm");
@@ -118,11 +124,11 @@ public class timePicker_1 extends AppCompatActivity {
                 sendBroadcast(my_intent);
                 Log.e("55555","8888888");
 
+
                 try {
                     if (media_song.isPlaying()) {
                         media_song.stop();
                     }
-                    media_song.release();
                 } catch (IllegalStateException e) {
                     Log.e(TAG, "stopOnlineMedia error=" + e.getMessage());
                 }

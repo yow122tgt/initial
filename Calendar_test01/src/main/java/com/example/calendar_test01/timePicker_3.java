@@ -49,6 +49,8 @@ public class timePicker_3 extends Activity {
         data_3 =table.getString("KEY_3","00:00");
         set_alarm_text("Alarm set to :"+ data_3 );
 
+        media_song = MediaPlayer.create(timePicker_3.this,R.raw.alarm);
+
     }
     public View.OnClickListener alarm_on_Click =new View.OnClickListener() {
         @RequiresApi(api = Build.VERSION_CODES.M)

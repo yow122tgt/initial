@@ -18,16 +18,16 @@ import androidx.annotation.RequiresApi;
 import static android.content.ContentValues.TAG;
 import static android.content.Context.NOTIFICATION_SERVICE;
 
-@SuppressWarnings("ALL")
+
 public class Alarm_Receiver_2 extends BroadcastReceiver {
 
-    //MediaPlayer media_song;
+
     public int startId;
     boolean isRunning;
-    private Context context;
 
 
-    //public static String get_your_string;
+
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -70,7 +70,7 @@ public class Alarm_Receiver_2 extends BroadcastReceiver {
             //create an instance of the media player
 
             //start the ringtone
-            timePicker_2.media_song .start();
+
 
 //----------------------------------------------------------------------提示
             NotificationChannel channel = new NotificationChannel(
@@ -80,7 +80,7 @@ public class Alarm_Receiver_2 extends BroadcastReceiver {
             channel.enableVibration(true);//震动
             channel.enableLights(true);//提示灯
 
-            Intent intent_main_activity = new Intent(context, calendarMain.class);
+            Intent intent_main_activity = new Intent(context,timePicker_2.class);
             intent_main_activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//
             //set up a pending intent
             PendingIntent pending_intent_main_activity = PendingIntent.getActivity(context, 0,
@@ -100,6 +100,8 @@ public class Alarm_Receiver_2 extends BroadcastReceiver {
                     (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
             manager.createNotificationChannel(channel);
             manager.notify(0, message);
+
+            timePicker_2.media_song .start();
 
             isRunning = true;
             startId = 0;
@@ -153,7 +155,7 @@ public class Alarm_Receiver_2 extends BroadcastReceiver {
         else {
             Log.e("else " ,"somehow you reached this");
         }
-
+return;
 
     }
 
