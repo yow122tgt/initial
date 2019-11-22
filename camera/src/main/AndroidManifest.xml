@@ -20,7 +20,8 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".scan2"></activity>
+        <activity android:name=".scan_MedicineDetail" />
+        <activity android:name=".scan2" />
         <activity android:name=".scan1">
 
 

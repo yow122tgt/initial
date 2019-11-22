@@ -107,7 +107,7 @@ public class scan2 extends AppCompatActivity {
                         nickName = input.getText().toString();
                         uploadImage(compressedBitmap);
                         Toast.makeText(scan2.this, "寫入資料庫",Toast.LENGTH_SHORT).show();
-                        finish();
+                        startActivity(new Intent(scan2.this, scan_MedicineDetail.class));
                     }
                 });
                 dialog.show();

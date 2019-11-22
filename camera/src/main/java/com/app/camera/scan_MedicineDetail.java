@@ -5,7 +5,11 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+
 public class scan_MedicineDetail extends Activity {
+    private RequestQueue mQueue;
+    private final static String mUrl = "http://192.168.56.1/get_json.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +28,6 @@ public class scan_MedicineDetail extends Activity {
         txt藥品外觀=findViewById(R.id.txt藥品外觀);
         img藥袋外觀=findViewById(R.id.img藥袋外觀);
         txt藥品名稱=findViewById(R.id.txt藥品名稱);
-
-
     }
     TextView detailTitle;
     TextView txt調劑日期;
