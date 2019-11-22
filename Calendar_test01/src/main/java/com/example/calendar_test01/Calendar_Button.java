@@ -2,6 +2,8 @@ package com.example.calendar_test01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +22,10 @@ public class Calendar_Button extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar__button);
+/*
+        events=getSharedPreferences("Events", Activity.MODE_PRIVATE);
+        int judge_2=events.getInt("jg_2",1);
+*/
 
         Btn_1 = (Button) findViewById(R.id.btn);
 
@@ -37,6 +43,6 @@ public class Calendar_Button extends AppCompatActivity {
         });
 
     }
-
+    public SharedPreferences events;
 
 }

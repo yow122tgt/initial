@@ -1,8 +1,11 @@
 package com.example.calendar_test01;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.ColorSpace;
 import android.os.Build;
@@ -11,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
@@ -126,9 +130,10 @@ public class calendarMain extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             compactCalendarView.scrollRight();
+
+
         }
     };
-    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,9 +142,6 @@ public class calendarMain extends AppCompatActivity {
         InitialComponent();
         TimeStart();
     }
-
-
-
 
     private void InitialComponent() {
 
@@ -162,12 +164,32 @@ public class calendarMain extends AppCompatActivity {
 
 //---------------------------------------------------------演算
 
+        String event [][] = new String[1][3];
+        event[0][0]="2019/11/22";
+        event[0][1]="28";
+        event[0][2]="1";
+
+        for(int d=0;d< Integer.parseInt(event[0][1]);d++)
+            {
+            dd = new int[Integer.parseInt(event[0][1])];
+            dd[d] = 0;
+        }
+
+    /*    events=getSharedPreferences("Events", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor roww=events.edit();
+
+        for(int d=0;d< Integer.parseInt(event[0][1]);d++)
+        {
+            roww.putInt("ad"+d,dd[d]).commit();
+        }*/
+
+
         try {
             Log.d("123","321");
-            IS事件日期 = new Date_Event("2017/05/24" , 28 ,1 ,new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}).dayday;
-            IS日期長串顯示 = new Date_Event("2017/05/24" ,  28 ,1,new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}).DEE;
+            IS事件日期 = new Date_Event(event[0][0] , Integer.parseInt(event[0][1]) ,Integer.parseInt(event[0][2]) ,dd).dayday;
+            IS日期長串顯示 = new Date_Event(event[0][0] , Integer.parseInt(event[0][1]) ,Integer.parseInt(event[0][2]) ,dd).DEE;
             Log.d("123","3563211");
-            IS確認吃藥 = new Date_Event("2017/05/24" ,  28 ,1,new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}).BB;
+            IS確認吃藥 = new Date_Event(event[0][0] , Integer.parseInt(event[0][1]) ,Integer.parseInt(event[0][2]) ,dd).BB;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -263,8 +285,10 @@ public class calendarMain extends AppCompatActivity {
     private long date;
     public static int day_1,day_2,day_3;
     public SharedPreferences table_1,table_2,table_3,table_4;
-
+    public int dd[];
     public Button btn_timepicker_1, btn_timepicker_2, btn_timepicker_3, btn_timepicker_4;
+
+    public SharedPreferences events;
 
 
     private NotificationManagerCompat notificationManager;
