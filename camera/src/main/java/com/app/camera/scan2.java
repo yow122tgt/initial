@@ -7,6 +7,7 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
@@ -66,10 +67,14 @@ public class scan2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scan2);
 
+        final SharedPreferences sharedPreferences = getSharedPreferences("UserInfo",MODE_PRIVATE);
+        String username = sharedPreferences.getString("username","");
+
         Intent intent = getIntent();
         Bundle bund = intent.getExtras();
         originalPicPath = bund.getString("originalPicPath");
         compressedPicPath = bund.getString("compressedPicPath");
+        Toast.makeText(scan2.this, username,Toast.LENGTH_SHORT).show();
 
         InitialComponent();
     }
@@ -107,7 +112,7 @@ public class scan2 extends AppCompatActivity {
                         nickName = input.getText().toString();
                         uploadImage(compressedBitmap);
                         Toast.makeText(scan2.this, "寫入資料庫",Toast.LENGTH_SHORT).show();
-                        finish();
+                        startActivity(new Intent(scan2.this, scan_MedicineDetail.class));
                     }
                 });
                 dialog.show();
