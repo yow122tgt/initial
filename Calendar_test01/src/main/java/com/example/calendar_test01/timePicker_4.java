@@ -74,7 +74,9 @@ public class timePicker_4 extends Activity {
 
             SharedPreferences table_4=getSharedPreferences("timePicker_4", Activity.MODE_PRIVATE);
             SharedPreferences.Editor row=table_4.edit();
-            row.putString("KEY_4",hour_string + ":" + minute_string).commit();
+            row.putString("KEY_4",hour_string + ":" + minute_string)
+                    .putInt("jg_4",0)
+                    .commit();
 
 
 
@@ -109,6 +111,12 @@ public class timePicker_4 extends Activity {
 
             bund.putString("extra","alarm off");
             my_intent.putExtras(bund);
+
+            SharedPreferences table_4=getSharedPreferences("timePicker_4", Activity.MODE_PRIVATE);
+            SharedPreferences.Editor row=table_4.edit();
+            row.putString("KEY_4","OFF")
+                    .putInt("jg_4",1)
+                    .commit();
 
             pending_intent = PendingIntent.getBroadcast(timePicker_4.this, 0, my_intent, PendingIntent.FLAG_NO_CREATE);
             if (pending_intent != null){

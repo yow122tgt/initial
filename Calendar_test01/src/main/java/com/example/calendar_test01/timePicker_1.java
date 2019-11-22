@@ -50,6 +50,8 @@ public class timePicker_1 extends Activity {
 
         SharedPreferences table=getSharedPreferences("timePicker_1", Activity.MODE_PRIVATE);
         data_1 =table.getString("KEY_1","OFF");
+
+
         set_alarm_text("Alarm set to :"+ data_1 );
 
         media_song = MediaPlayer.create(timePicker_1.this,R.raw.alarm);
@@ -75,12 +77,11 @@ public class timePicker_1 extends Activity {
                 minute_string = "0" + String.valueOf(minute);
             }
 
-            SharedPreferences table_1=getSharedPreferences("timePicker_1", Activity.MODE_PRIVATE);
+            table_1=getSharedPreferences("timePicker_1", Activity.MODE_PRIVATE);
             SharedPreferences.Editor row=table_1.edit();
-            row.putString("KEY_1",hour_string + ":" + minute_string).commit();
-
-
-
+            row.putString("KEY_1",hour_string + ":" + minute_string)
+                    .putInt("jg_1",0)
+                    .commit();
 
             set_alarm_text("Alarm set to :"+hour_string + ":" + minute_string);
 
@@ -112,6 +113,13 @@ public class timePicker_1 extends Activity {
         @Override
         public void onClick(View v) {
             set_alarm_text("Alarm off!");
+
+            table_1=getSharedPreferences("timePicker_1", Activity.MODE_PRIVATE);
+            SharedPreferences.Editor row=table_1.edit();
+            row.putString("KEY_1","OFF")
+                    .putInt("jg_1",1)
+                    .commit();
+
 
             bund.putString("extra","alarm off");
             my_intent.putExtras(bund);
@@ -159,6 +167,7 @@ public class timePicker_1 extends Activity {
     private static timePicker_1 inst;
     public static MediaPlayer media_song;
     public Bundle bund = new Bundle();
+    public SharedPreferences table_1;
     android.widget.TimePicker timePicker;
 
 

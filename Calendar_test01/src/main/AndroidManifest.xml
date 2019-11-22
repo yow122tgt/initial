@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
 
+
         <activity android:name=".timePicker_2"
             android:enabled="true"></activity>
         <activity android:name=".timePicker_3"
@@ -43,16 +44,6 @@
         <receiver android:name=".Alarm_Receiver_4"
             android:enabled="true"
             android:exported="true"/>
-        <service
-            android:name=".RingtonePlayingService_1"
-            android:enabled="true"
-            android:exported="true"
-            android:persistent="true">
-            <intent-filter android:priority="1000" >
-                <action android:name="com.dbjtech.waiqin.destroy"/>
-            <action android:name="com.dbjtech.myservice" />
-            </intent-filter>
-        </service>
     </application>
 
 </manifest>

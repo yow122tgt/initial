@@ -43,7 +43,7 @@ public class userinfo extends Activity {
     private View.OnClickListener btnM行事曆_click=new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-
+            startActivity(new Intent (userinfo.this, com.example.calendar_test01.calendarMain.class));
         }
     };
 

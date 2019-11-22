@@ -44,7 +44,7 @@ public class MedicineInfoAct extends Activity {
     private View.OnClickListener btnM行事曆_click=new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-
+            startActivity(new Intent (MedicineInfoAct.this, com.example.calendar_test01.calendarMain.class));
         }
     };
 

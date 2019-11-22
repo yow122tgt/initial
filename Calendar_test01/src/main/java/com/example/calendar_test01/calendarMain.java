@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.ColorSpace;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
@@ -24,6 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+
 
 
 public class calendarMain extends AppCompatActivity {
@@ -61,26 +64,55 @@ public class calendarMain extends AppCompatActivity {
         }
     };
 
+
     @Override
     protected void onResume() {
         super.onResume();
         //InitialComponent();
 
-        SharedPreferences table_1=getSharedPreferences("timePicker_1", Activity.MODE_PRIVATE);
-        String data_1=table_1.getString("KEY_1","00:00");
+
+        String data_1=table_1.getString("KEY_1","OFF");
         btn_timepicker_1.setText(data_1);
 
-        SharedPreferences table_2=getSharedPreferences("timePicker_2", Activity.MODE_PRIVATE);
-        String data_2=table_2.getString("KEY_2","00:00");
+
+        String data_2=table_2.getString("KEY_2","OFF");
         btn_timepicker_2.setText(data_2);
 
-        SharedPreferences table_3=getSharedPreferences("timePicker_3", Activity.MODE_PRIVATE);
-        String data_3=table_3.getString("KEY_3","00:00");
+
+        String data_3=table_3.getString("KEY_3","OFF");
         btn_timepicker_3.setText(data_3);
 
-        SharedPreferences table_4=getSharedPreferences("timePicker_4", Activity.MODE_PRIVATE);
-        String data_4=table_4.getString("KEY_4","00:00");
+
+        String data_4=table_4.getString("KEY_4","OFF");
         btn_timepicker_4.setText(data_4);
+
+        table_1=getSharedPreferences("timePicker_1", Activity.MODE_PRIVATE);
+        int judge_1=table_1.getInt("jg_1",1);
+        if(judge_1 == 0)
+            btn_timepicker_1.setTextColor(Color.RED);
+        else
+            btn_timepicker_1.setTextColor(Color.BLACK);
+
+        table_2=getSharedPreferences("timePicker_2", Activity.MODE_PRIVATE);
+        int judge_2=table_2.getInt("jg_2",1);
+        if(judge_2 == 0)
+            btn_timepicker_2.setTextColor(Color.RED);
+        else
+            btn_timepicker_2.setTextColor(Color.BLACK);
+
+        table_3=getSharedPreferences("timePicker_3", Activity.MODE_PRIVATE);
+        int judge_3=table_3.getInt("jg_3",1);
+        if(judge_3 == 0)
+            btn_timepicker_3.setTextColor(Color.RED);
+        else
+            btn_timepicker_3.setTextColor(Color.BLACK);
+
+        table_4=getSharedPreferences("timePicker_4", Activity.MODE_PRIVATE);
+        int judge_4=table_4.getInt("jg_4",1);
+        if(judge_4 == 0)
+            btn_timepicker_4.setTextColor(Color.RED);
+        else
+            btn_timepicker_4.setTextColor(Color.BLACK);
 
     }
 
@@ -108,10 +140,9 @@ public class calendarMain extends AppCompatActivity {
 
 
 
+
     private void InitialComponent() {
 
-        //Toast.makeText(this, "onCreate", Toast.LENGTH_LONG).show();
-Log.e("123","321");
         compactCalendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         compactCalendarView.setLocale(TimeZone.getTimeZone("GMT 08:00"),Locale.CHINESE);
         compactCalendarView.setUseThreeLetterAbbreviation(true);
@@ -120,24 +151,13 @@ Log.e("123","321");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(dateFormatMonth.format(compactCalendarView.getFirstDayOfCurrentMonth()));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("    "+dateFormatMonth.format(compactCalendarView.getFirstDayOfCurrentMonth()));
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Log.e("123","456");
-      //actionBar = getSupportActionBar();
-        Log.e("123","4456");
-     // actionBar.setDisplayHomeAsUpEnabled(true);
-        Log.e("123","44456");
-      //actionBar.setTitle(null);
-      //toolbar.setTitle(dateFormatMonth.format(compactCalendarView.getFirstDayOfCurrentMonth()));
-        Log.e("123","789");
         showPreviousMonthBut = (Button) findViewById(R.id.prev_button);
         showPreviousMonthBut.setOnClickListener(Left_Click);
         showNextMonthBut = (Button) findViewById(R.id.next_button);
         showNextMonthBut.setOnClickListener(Right_Click);
-
-
-
 
 
 //---------------------------------------------------------演算
@@ -182,14 +202,14 @@ Log.e("123","321");
 //----------------------------------------------------------------------------
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-                getSupportActionBar().setTitle(dateFormatMonth.format(firstDayOfNewMonth));
+                getSupportActionBar().setTitle("    "+dateFormatMonth.format(firstDayOfNewMonth));
 
             }
         });
     }
 
 //----------------------------------------------------------------------------
-    private void TimeStart() {
+    public void TimeStart() {
         btn_timepicker_1 = (Button) findViewById(R.id.btn_timePicker_1);
         btn_timepicker_1.setOnClickListener(btn_timepicker_1_Click);
         btn_timepicker_2 = (Button) findViewById(R.id.btn_timePicker_2);
@@ -199,7 +219,33 @@ Log.e("123","321");
         btn_timepicker_4 = (Button) findViewById(R.id.btn_timePicker_4);
         btn_timepicker_4.setOnClickListener( btn_timepicker_4_Click );
 
+        table_1=getSharedPreferences("timePicker_1", Activity.MODE_PRIVATE);
+        int judge_1=table_1.getInt("jg_1",1);
+        if(judge_1 == 0)
+            btn_timepicker_1.setTextColor(Color.RED);
+        else
+            btn_timepicker_1.setTextColor(Color.BLACK);
 
+        table_2=getSharedPreferences("timePicker_2", Activity.MODE_PRIVATE);
+        int judge_2=table_2.getInt("jg_2",1);
+        if(judge_2 == 0)
+            btn_timepicker_2.setTextColor(Color.RED);
+        else
+            btn_timepicker_2.setTextColor(Color.BLACK);
+
+        table_3=getSharedPreferences("timePicker_3", Activity.MODE_PRIVATE);
+        int judge_3=table_3.getInt("jg_3",1);
+        if(judge_3 == 0)
+            btn_timepicker_3.setTextColor(Color.RED);
+        else
+            btn_timepicker_3.setTextColor(Color.BLACK);
+
+        table_4=getSharedPreferences("timePicker_4", Activity.MODE_PRIVATE);
+        int judge_4=table_4.getInt("jg_4",1);
+        if(judge_4 == 0)
+            btn_timepicker_4.setTextColor(Color.RED);
+        else
+            btn_timepicker_4.setTextColor(Color.BLACK);
 
     }
 
@@ -216,9 +262,10 @@ Log.e("123","321");
     public static int IS確認吃藥[ ];
     private long date;
     public static int day_1,day_2,day_3;
-
+    public SharedPreferences table_1,table_2,table_3,table_4;
 
     public Button btn_timepicker_1, btn_timepicker_2, btn_timepicker_3, btn_timepicker_4;
+
 
     private NotificationManagerCompat notificationManager;
 

@@ -4,23 +4,29 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:id="@+id/main_content"
+
     >
 
     <include
         android:id="@+id/toolbar"
-       layout="@layout/cal_bar_layout"/>
+       layout="@layout/cal_bar_layout"
+        />
 
     <RelativeLayout
         android:id="@+id/ll_1"
         android:layout_width="match_parent"
+
         android:layout_height="55dp"
         android:background="#F3EB90"
         android:layout_below="@id/toolbar">
 
+
         <Button
             android:layout_alignParentLeft="true"
             android:id="@+id/prev_button"
+            android:layout_marginTop="2dp"
             android:text="上 個 月"
+            android:background="@drawable/drawll_3"
             android:textSize="20sp"
             android:layout_marginLeft="50dp"
             android:layout_width="125dp"
@@ -31,7 +37,9 @@
 
             android:layout_alignParentRight="true"
             android:id="@+id/next_button"
+            android:layout_marginTop="2dp"
             android:text="下 個 月"
+            android:background="@drawable/drawll_3"
             android:textSize="20sp"
             android:layout_marginRight="50dp"
             android:layout_width="125dp"
@@ -54,11 +62,10 @@
         app:compactCalendarTextColor="#000"
         app:compactCalendarCurrentSelectedDayBackgroundColor="#4859D2D6"
         app:compactCalendarCurrentDayBackgroundColor="#FF9800"
-
         app:compactCalendarMultiEventIndicatorColor="#fff"
         app:compactCalendarEventIndicatorStyle="fill_large_indicator"
-        app:compactCalendarOtherMonthDaysTextColor="#534c4c"
-        app:compactCalendarShouldSelectFirstDayOfMonthOnScroll="true"
+        app:compactCalendarOtherMonthDaysTextColor="#5C534C4C"
+        app:compactCalendarDisplayOtherMonthDays="false"
         android:layout_below="@+id/ll_1"
         />
 
@@ -66,8 +73,9 @@
         android:layout_width="match_parent"
         android:layout_height="426dp"
         android:layout_below="@+id/compactcalendar_view"
-        android:background="#FFF"
-        android:paddingTop="10dp"
+        android:background="#BAD3E9"
+        android:paddingTop="5sp"
+
         >
 
 
@@ -78,8 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/timePicker"
-            android:layout_marginTop="1sp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="52dp"
             android:background="@drawable/drawll_1">
 
             <TextView
@@ -157,17 +164,19 @@
                 android:layout_height="70dp"
                 android:text="8:00"
                 android:textSize="25sp"
+                android:background="@drawable/drawll_2"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginBottom="55dp" />
+                android:layout_marginBottom="50dp" />
 
             <Button
                 android:id="@+id/btn_timePicker_2"
                 android:layout_width="90dp"
                 android:layout_height="70dp"
+                android:background="@drawable/drawll_2"
                 android:text="12:00"
                 android:textSize="25sp"
                 android:layout_alignParentStart="true"
@@ -175,12 +184,13 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="109dp"
                 android:layout_marginLeft="109dp"
-                android:layout_marginBottom="55dp" />
+                android:layout_marginBottom="50dp" />
 
             <Button
                 android:id="@+id/btn_timePicker_3"
                 android:layout_width="90dp"
                 android:layout_height="70dp"
+                android:background="@drawable/drawll_2"
                 android:text="18:00"
                 android:textSize="25sp"
                 android:layout_alignParentStart="true"
@@ -188,12 +198,13 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="210dp"
                 android:layout_marginLeft="210dp"
-                android:layout_marginBottom="55dp" />
+                android:layout_marginBottom="50dp" />
 
             <Button
                 android:id="@+id/btn_timePicker_4"
                 android:layout_width="90dp"
                 android:layout_height="70dp"
+                android:background="@drawable/drawll_2"
                 android:text="22:00"
                 android:textSize="25sp"
                 android:layout_alignParentStart="true"
@@ -201,12 +212,9 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="314dp"
                 android:layout_marginLeft="314dp"
-                android:layout_marginBottom="55dp" />
+                android:layout_marginBottom="50dp" />
 
         </RelativeLayout>
-
-
-
 
     </RelativeLayout>
 </RelativeLayout>

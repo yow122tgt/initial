@@ -46,6 +46,7 @@ public class timePicker_2 extends Activity {
 
         SharedPreferences table=getSharedPreferences("timePicker_2", Activity.MODE_PRIVATE);
         data_2 =table.getString("KEY_2","00:00");
+
         set_alarm_text("Alarm set to :"+ data_2 );
 
         media_song = MediaPlayer.create(timePicker_2.this,R.raw.alarm);
@@ -73,7 +74,9 @@ public class timePicker_2 extends Activity {
 
             SharedPreferences table_2=getSharedPreferences("timePicker_2", Activity.MODE_PRIVATE);
             SharedPreferences.Editor row=table_2.edit();
-            row.putString("KEY_2",hour_string + ":" + minute_string).commit();
+            row.putString("KEY_2",hour_string + ":" + minute_string)
+                    .putInt("jg_2",0)
+                    .commit();
 
 
 
@@ -108,6 +111,12 @@ public class timePicker_2 extends Activity {
 
             bund.putString("extra","alarm off");
             my_intent.putExtras(bund);
+
+            SharedPreferences table_2=getSharedPreferences("timePicker_2", Activity.MODE_PRIVATE);
+            SharedPreferences.Editor row=table_2.edit();
+            row.putString("KEY_2","OFF")
+                    .putInt("jg_2",1)
+                    .commit();
 
             pending_intent = PendingIntent.getBroadcast(timePicker_2.this, 0, my_intent, PendingIntent.FLAG_NO_CREATE);
             if (pending_intent != null){
