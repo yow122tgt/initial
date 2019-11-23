@@ -49,7 +49,7 @@ public class timePicker_2 extends Activity {
 
         set_alarm_text("Alarm set to :"+ data_2 );
 
-        media_song = MediaPlayer.create(timePicker_2.this,R.raw.alarm);
+
 
     }
     public View.OnClickListener alarm_on_Click =new View.OnClickListener() {
@@ -126,10 +126,10 @@ public class timePicker_2 extends Activity {
                 Log.e("55555","8888888");
 
                 try {
-                    if (media_song.isPlaying()) {
-                        media_song.stop();
+                    if (calendarMain.media_song.isPlaying()) {
+                        calendarMain.media_song.stop();
                     }
-                    media_song.release();
+                    calendarMain.media_song.release();
                 } catch (IllegalStateException e) {
                     Log.e(TAG, "stopOnlineMedia error=" + e.getMessage());
                 }
@@ -158,6 +158,7 @@ public class timePicker_2 extends Activity {
     public Context context;
     public PendingIntent pending_intent = null;
     private static timePicker_2 inst;
+
     public static MediaPlayer media_song;
     public Bundle bund = new Bundle();
     android.widget.TimePicker timePicker;

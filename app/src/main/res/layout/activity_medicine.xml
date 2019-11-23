@@ -19,6 +19,7 @@
             android:layout_marginTop="50sp">
             <TableRow
                  android:gravity="center_horizontal"
+                android:id="@+id/tr1"
                >
                 <ImageButton
                 android:id="@+id/btnx"
@@ -32,7 +33,7 @@
                     android:id="@+id/btnInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="聖安健保-神經內科科診"
+                    android:text=""
                     style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                  android:background="@color/common_google_signin_btn_text_dark_disabled"
 
@@ -62,13 +63,13 @@ android:visibility="invisible"
                     android:paddingRight="50sp"
                     android:layout_marginRight="50sp"
                     android:background="@drawable/x"
-                    android:visibility="invisible"
+
                     />
                 <Button
                     android:id="@+id/btnInfo2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="尚無藥單資料"
+                    android:text=""
                     style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                     android:background="@color/common_google_signin_btn_text_dark_disabled"
 
@@ -78,7 +79,7 @@ android:visibility="invisible"
                     android:id="@+id/btnplus2"
                     android:layout_width="50sp"
                     android:layout_height="50sp"
-
+                    android:visibility="invisible"
                     android:layout_marginLeft="50sp"
                     android:background="@drawable/plus"
                     />
@@ -95,13 +96,13 @@ android:visibility="invisible"
                     android:paddingRight="80sp"
                     android:layout_marginRight="50sp"
                     android:background="@drawable/x"
-                    android:visibility="invisible"
+
                     />
                 <Button
                     android:id="@+id/btnInfo3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="尚無藥單資料"
+                    android:text=""
                     style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                     android:background="@color/common_google_signin_btn_text_dark_disabled"
 
@@ -111,7 +112,7 @@ android:visibility="invisible"
                     android:id="@+id/btnplus3"
                     android:layout_width="50sp"
                     android:layout_height="50sp"
-
+                    android:visibility="invisible"
                     android:layout_marginLeft="50sp"
                     android:background="@drawable/plus"
                     />
@@ -120,6 +121,7 @@ android:visibility="invisible"
             <TableRow
                 android:gravity="center_horizontal"
                 android:layout_marginTop="50sp"
+                android:id="@+id/tr4"
                 >
                 <ImageButton
                     android:id="@+id/btnx4"
@@ -128,13 +130,14 @@ android:visibility="invisible"
                     android:paddingRight="80sp"
                     android:layout_marginRight="50sp"
                     android:background="@drawable/x"
-                    android:visibility="invisible"
+
                     />
                 <Button
                     android:id="@+id/btnInfo4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="尚無藥單資料"
+                    android:text=""
+
                     style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                     android:background="@color/common_google_signin_btn_text_dark_disabled"
 
@@ -144,7 +147,7 @@ android:visibility="invisible"
                     android:id="@+id/btnplus4"
                     android:layout_width="50sp"
                     android:layout_height="50sp"
-
+                    android:visibility="invisible"
                     android:layout_marginLeft="50sp"
                     android:background="@drawable/plus"
                     />
@@ -168,6 +171,7 @@ android:visibility="invisible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="尚無藥單資料"
+                    android:visibility="invisible"
                     style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                     android:background="@color/common_google_signin_btn_text_dark_disabled"
 
@@ -177,44 +181,13 @@ android:visibility="invisible"
                     android:id="@+id/btnplus5"
                     android:layout_width="50sp"
                     android:layout_height="50sp"
-
-                    android:layout_marginLeft="50sp"
-                    android:background="@drawable/plus"
-                    />
-            </TableRow>
-
-            <TableRow
-                android:gravity="center_horizontal"
-                android:layout_marginTop="50sp"
-                >
-                <ImageButton
-                    android:id="@+id/btnx6"
-                    android:layout_width="50sp"
-                    android:layout_height="50sp"
-                    android:paddingRight="80sp"
-                    android:layout_marginRight="50sp"
-                    android:background="@drawable/x"
                     android:visibility="invisible"
-                    />
-                <Button
-                    android:id="@+id/btnInfo6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="尚無藥單資料"
-                    style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
-                    android:background="@color/common_google_signin_btn_text_dark_disabled"
-
-                    />
-
-                <ImageButton
-                    android:id="@+id/btnplus6"
-                    android:layout_width="50sp"
-                    android:layout_height="50sp"
-
                     android:layout_marginLeft="50sp"
                     android:background="@drawable/plus"
                     />
             </TableRow>
+
+
 
 
         </TableLayout>

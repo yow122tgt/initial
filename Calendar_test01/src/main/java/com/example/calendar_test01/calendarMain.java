@@ -2,19 +2,16 @@ package com.example.calendar_test01;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.graphics.Color;
-import android.graphics.ColorSpace;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
@@ -31,6 +28,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import static android.content.ContentValues.TAG;
 
 
 public class calendarMain extends AppCompatActivity {
@@ -118,6 +116,43 @@ public class calendarMain extends AppCompatActivity {
         else
             btn_timepicker_4.setTextColor(Color.BLACK);
 
+        InitialComponent();
+//------------------------------------------------------------------------------------------------
+/*
+        cal_catch_events =getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
+        for(int d=0;d< Integer.parseInt(event[0][1]);d++)
+        {
+            endjudge = new int[Integer.parseInt(event[0][1])];
+            endjudge[d]= cal_catch_events.getInt("jg"+String.valueOf(d),0);
+        }
+        Log.e("day2", String.valueOf(endjudge[0]));
+
+        IS確認吃藥 = endjudge;
+        Log.e("day21", String.valueOf(IS確認吃藥[0]));
+
+        for( day_1 =0;day_1<IS事件日期.length;day_1++) {
+            date = new toUnix(IS事件日期[day_1]).epoch;
+
+            if(IS確認吃藥[day_1]==1){
+                Log.e("day21", String.valueOf(IS確認吃藥[0]));
+                Event ev1 = new Event(Color.GREEN, date, "已吃完藥");
+                Log.e("789","6666666666");
+                compactCalendarView.addEvent(ev1);
+            }
+            else{
+                Event ev1 = new Event(Color.RED, date, "未吃完藥");
+                Log.e("789","5555555555");
+                compactCalendarView.addEvent(ev1);
+            }
+
+        }
+*//*
+        if(IS確認吃藥[day_3]==1){
+            Event ev1 = new Event(Color.GREEN, date, "已吃完藥");
+            Log.e("789","6666666666");
+            compactCalendarView.addEvent(ev1);
+        }
+*/
     }
 
     private View.OnClickListener Left_Click = new View.OnClickListener() {
@@ -162,34 +197,107 @@ public class calendarMain extends AppCompatActivity {
         showNextMonthBut.setOnClickListener(Right_Click);
 
 
-//---------------------------------------------------------演算
+//---------------------------------------------------------鈴聲
+        media_song = MediaPlayer.create(calendarMain.this,R.raw.alarm);
+        try {
+            if (media_song.isPlaying()) {
+                media_song.stop();
+            }
+        } catch (IllegalStateException e) {
+            Log.e(TAG, "stopOnlineMedia error=" + e.getMessage());
+        }
 
-        String event [][] = new String[1][3];
+//---------------------------------------------------------對話盒
+
+        altDlgBuilder = new AlertDialog.Builder(calendarMain.this);
+        altDlgBuilder.setTitle("確認是否吃藥");
+        altDlgBuilder.setMessage("今日是否已吃完藥了??");
+        altDlgBuilder.setIcon(android.R.drawable.ic_dialog_info);
+        altDlgBuilder.setCancelable(false);
+
+        altDlgBuilder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                judge[day_3] =1;
+                Log.e("abc","52555");
+                btn_to_events=getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
+                for(int d=0;d< Integer.parseInt(event[0][1]);d++)
+                {
+                    String JG = "jg"+String.valueOf(d);
+                    if(judge[d] ==1) {
+                        btn_to_events.edit().putInt(JG, 1).commit();
+                    }
+                    else
+                        btn_to_events.edit().putInt(JG,0).commit();
+                }
+            InitialComponent();
+            }
+
+        });
+
+        altDlgBuilder.setNegativeButton("否", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                judge[day_3] =0;
+                Log.e("abc","52555");
+                btn_to_events=getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
+                for(int d=0;d< Integer.parseInt(event[0][1]);d++)
+                {
+                    String JG = "jg"+String.valueOf(d);
+                    if(judge[d] ==1) {
+                        btn_to_events.edit().putInt(JG, 1).commit();
+                    }
+                    else
+                        btn_to_events.edit().putInt(JG,0).commit();
+                }
+                InitialComponent();
+
+            }
+        });
+
+        altDlgBuilder.setNeutralButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+//-----------------------------------------------------------演算
+        event = new String[1][3];
         event[0][0]="2019/11/22";
         event[0][1]="28";
         event[0][2]="1";
 
-        for(int d=0;d< Integer.parseInt(event[0][1]);d++)
-            {
-            dd = new int[Integer.parseInt(event[0][1])];
-            dd[d] = 0;
-        }
 
-    /*    events=getSharedPreferences("Events", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor roww=events.edit();
+
+        cal_catch_events =getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
+        endjudge = new int[Integer.parseInt(event[0][1])];
 
         for(int d=0;d< Integer.parseInt(event[0][1]);d++)
         {
-            roww.putInt("ad"+d,dd[d]).commit();
-        }*/
+            String JG = "jg"+String.valueOf(d);
+            endjudge[d]= cal_catch_events.getInt(JG,0);
+        }
+        Log.e("day30", String.valueOf(endjudge[0]));
+        Log.e("day31", String.valueOf(endjudge[1]));
+        Log.e("day32", String.valueOf(endjudge[2]));
+
+        cal_to_events =getSharedPreferences("cal_Events",Activity.MODE_PRIVATE);
+        SharedPreferences.Editor row= cal_to_events.edit();
+        for(int d=0;d< Integer.parseInt(event[0][1]);d++)
+        {
+            String AD = "ad"+String.valueOf(d);
+            row.putInt(AD,endjudge[d]).commit();
+        }
+
 
 
         try {
-            Log.d("123","321");
-            IS事件日期 = new Date_Event(event[0][0] , Integer.parseInt(event[0][1]) ,Integer.parseInt(event[0][2]) ,dd).dayday;
-            IS日期長串顯示 = new Date_Event(event[0][0] , Integer.parseInt(event[0][1]) ,Integer.parseInt(event[0][2]) ,dd).DEE;
-            Log.d("123","3563211");
-            IS確認吃藥 = new Date_Event(event[0][0] , Integer.parseInt(event[0][1]) ,Integer.parseInt(event[0][2]) ,dd).BB;
+            IS事件日期 = new Date_Event(event[0][0] , Integer.parseInt(event[0][1]) ,Integer.parseInt(event[0][2]) /*,dd*/).dayday;
+            IS日期長串顯示 = new Date_Event(event[0][0] , Integer.parseInt(event[0][1]) ,Integer.parseInt(event[0][2]) /*,dd*/).DEE;
+            IS確認吃藥 = new int[Integer.parseInt(event[0][1])];
+            IS確認吃藥 = endjudge;
+            Log.e("789","77777777");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -197,13 +305,15 @@ public class calendarMain extends AppCompatActivity {
 
         for( day_1 =0;day_1<IS事件日期.length;day_1++) {
             date = new toUnix(IS事件日期[day_1]).epoch;
-
-            if(IS確認吃藥[day_1]==1){
+            Log.e("789",String.valueOf(date));
+            if(endjudge[day_1]==1){
                 Event ev1 = new Event(Color.GREEN, date, "已吃完藥");
+                Log.e("789","6666666666");
                 compactCalendarView.addEvent(ev1);
             }
             else{
                 Event ev1 = new Event(Color.RED, date, "未吃完藥");
+                Log.e("789","5555555555");
                 compactCalendarView.addEvent(ev1);
             }
 
@@ -215,9 +325,19 @@ public class calendarMain extends AppCompatActivity {
                // Context context = getApplicationContext();
                 for (day_2 = 0; day_2 < IS日期長串顯示.length;day_2++) {
                     if (dateClicked.toString().compareTo(IS日期長串顯示[day_2]) == 0) {
-                        Intent intent = new Intent(calendarMain.this, Calendar_Button.class);
-                        startActivity(intent);
+                        btn_catch_events =getSharedPreferences("cal_Events", Activity.MODE_PRIVATE);
+                        judge = new int[Integer.parseInt(event[0][1])];
+                        for(int d=0;d< Integer.parseInt(event[0][1]);d++)
+                        {
+                            String AD = "ad"+String.valueOf(d);
+                            judge[d]= btn_catch_events.getInt(AD,0);
+                        }
+
+                        altDlgBuilder.show();
+                       // Intent intent = new Intent(calendarMain.this, Calendar_Button.class);
+                       // startActivity(intent);
                         day_3=day_2;
+
                     }
                 }
             }
@@ -285,12 +405,19 @@ public class calendarMain extends AppCompatActivity {
     private long date;
     public static int day_1,day_2,day_3;
     public SharedPreferences table_1,table_2,table_3,table_4;
-    public int dd[];
+    public int confirm_day[];
     public Button btn_timepicker_1, btn_timepicker_2, btn_timepicker_3, btn_timepicker_4;
 
-    public SharedPreferences events;
-
+    public SharedPreferences cal_to_events;
+    public SharedPreferences cal_catch_events;
+    public static String event [][];
+    public int endjudge[];
 
     private NotificationManagerCompat notificationManager;
+    public static MediaPlayer media_song;
 
+    public SharedPreferences btn_catch_events;
+    public SharedPreferences btn_to_events;
+    public int judge[];
+    public AlertDialog.Builder altDlgBuilder;
 }

@@ -13,12 +13,12 @@ import java.util.Date;
         public static int BB[ ];
 
             //public test02(String s , int day) throws Exception {
-            public Date_Event(String 藥單日期 , int 要吃幾天,int 幾天一次,int 是否吃藥[ ]) throws Exception {
+            public Date_Event(String 藥單日期 , int 要吃幾天,int 幾天一次/*,int 是否吃藥[ ]*/) throws Exception {
 
 
                 dayday = new String[要吃幾天];
                 DEE= new String[要吃幾天];
-                BB = new int[要吃幾天];
+                //BB = new int[要吃幾天];
 
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
                 String str=藥單日期;
@@ -35,7 +35,7 @@ import java.util.Date;
                     date = sdf.parse(dayday[d]);
                     DEE[d] = date.toString();
 
-                    BB[d]=是否吃藥[d];
+                    //BB[d]=是否吃藥[d];
 
                  //   System.out.println(dayday[d]);
                     rightNow.add(Calendar.DAY_OF_YEAR,幾天一次);//日期加10天

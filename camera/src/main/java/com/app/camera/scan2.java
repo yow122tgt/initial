@@ -111,8 +111,9 @@ public class scan2 extends AppCompatActivity {
                         // TODO Auto-generated method stub
                         nickName = input.getText().toString();
                         uploadImage(compressedBitmap);
-                        Toast.makeText(scan2.this, "寫入資料庫",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(scan2.this, scan_MedicineDetail.class));
+                        Toast.makeText(scan2.this, "新增藥單成功",Toast.LENGTH_SHORT).show();
+                        //startActivity(new Intent(scan2.this, scan1.class));
+                        finish();
                     }
                 });
                 dialog.show();
@@ -320,10 +321,12 @@ public class scan2 extends AppCompatActivity {
     Button mBtnApply, mBtnBack;
 
     public void traceOn() {
-        mEdtName.setText("RIVOTRIL 0.5MG 利福全");
+        mEdtName.setText("PRIVOTRIL 0.5MG 福利全");
         mEdtDays.setText("28");
         mEdtIndication.setText("緩和焦慮相關症狀、控制癲癇發作");
-        mEdtDosage.setText("口服 (每天2次)早晚飯後服用 每次0.50");
+        mEdtDosage.setText("口服\n" +
+                "每一天兩次，遵照醫師指示，" +
+                "早飯後1粒，午飯後1粒");
         mEdtSideEffect.setText("疲倦、肌肉無力等等");
     }
 }
