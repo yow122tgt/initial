@@ -16,6 +16,11 @@
         tools:replace="android:icon,android:theme">
         <activity android:name="com.jd3z.userinfo.userinfo"></activity>
         <activity android:name=".MedicineDetail" />
+        <activity android:name="medicineinfo.MedicineDetail2" />
+        <activity android:name="medicineinfo.MedicineDetail3" />
+        <activity android:name="medicineinfo.MedicineDetail4" />
+        <activity android:name="medicineinfo.MedicineDetail5" />
+        <activity android:name="medicineinfo.MedicineDetail6" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".confirmpassword" />

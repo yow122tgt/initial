@@ -134,4 +134,6 @@ public class scan1 extends Activity {
         canvas.drawBitmap(bmp, 0, 0, paint);
         return GBitmap;
     }
+
+
 }

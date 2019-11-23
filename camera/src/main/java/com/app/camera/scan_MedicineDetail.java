@@ -18,7 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class scan_MedicineDetail extends Activity {
-    private String showUri = "http://192.168.1.50/readMedicineDetailT.php";
+    private String showUri = "http://192.168.0.10/readMedicineDetailT.php";
     String result;
     com.android.volley.RequestQueue requestQueue;
 
