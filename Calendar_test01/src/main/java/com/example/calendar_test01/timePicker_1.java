@@ -28,11 +28,13 @@ import static android.content.ContentValues.TAG;
 
 public class timePicker_1 extends Activity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_picker_1);
         initialComponent();
+
     }
 
     private void initialComponent() {
@@ -54,7 +56,7 @@ public class timePicker_1 extends Activity {
 
         set_alarm_text("Alarm set to :"+ data_1 );
 
-        media_song = MediaPlayer.create(timePicker_1.this,R.raw.alarm);
+
 
     }
     public View.OnClickListener alarm_on_Click =new View.OnClickListener() {
@@ -134,8 +136,8 @@ public class timePicker_1 extends Activity {
 
 
                 try {
-                    if (media_song.isPlaying()) {
-                        media_song.stop();
+                    if (calendarMain.media_song.isPlaying()) {
+                        calendarMain.media_song.stop();
                     }
                 } catch (IllegalStateException e) {
                     Log.e(TAG, "stopOnlineMedia error=" + e.getMessage());
@@ -165,7 +167,7 @@ public class timePicker_1 extends Activity {
     public Context context;
     public PendingIntent pending_intent = null;
     private static timePicker_1 inst;
-    public static MediaPlayer media_song;
+
     public Bundle bund = new Bundle();
     public SharedPreferences table_1;
     android.widget.TimePicker timePicker;

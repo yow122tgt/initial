@@ -37,7 +37,7 @@ public class Alarm_Receiver_2 extends BroadcastReceiver {
         String get_your_string = intent.getExtras().getString("extra");
         Log.e("What is the key?",get_your_string);
 
-        timePicker_2.media_song = MediaPlayer.create(context,R.raw.alarm);
+        calendarMain.media_song = MediaPlayer.create(context,R.raw.alarm);
      /*   Intent service_intent = new Intent(context,timePicker_1.class);
         Bundle bund = new Bundle();
         bund.putString("extra01",get_your_string);
@@ -80,7 +80,7 @@ public class Alarm_Receiver_2 extends BroadcastReceiver {
             channel.enableVibration(true);//震动
             channel.enableLights(true);//提示灯
 
-            Intent intent_main_activity = new Intent(context,timePicker_2.class);
+            Intent intent_main_activity = new Intent(context,calendarMain.class);
             intent_main_activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//
             //set up a pending intent
             PendingIntent pending_intent_main_activity = PendingIntent.getActivity(context, 0,
@@ -92,7 +92,7 @@ public class Alarm_Receiver_2 extends BroadcastReceiver {
                     .setContentText("訊息來自 I-Medicine")
                     .setContentIntent(pending_intent_main_activity)
                     .setAutoCancel(true)
-                    .setSmallIcon(R.drawable.cellphone )
+                    .setSmallIcon(R.drawable.ic_perm_phone_msg_black_24dp)
                     .setChannelId("myid")
                     .build();
 
@@ -101,7 +101,7 @@ public class Alarm_Receiver_2 extends BroadcastReceiver {
             manager.createNotificationChannel(channel);
             manager.notify(0, message);
 
-            timePicker_2.media_song .start();
+            calendarMain.media_song.start();
 
             isRunning = true;
             startId = 0;
@@ -117,7 +117,7 @@ public class Alarm_Receiver_2 extends BroadcastReceiver {
             Log.e("there is  music, " ,"and you want end");
 
             //stop the ringtone
-            timePicker_2.media_song .stop();
+            calendarMain.media_song.stop();
 
 
 

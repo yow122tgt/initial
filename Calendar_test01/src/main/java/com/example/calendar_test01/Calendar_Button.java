@@ -46,9 +46,15 @@ public class Calendar_Button extends AppCompatActivity {
         Btn_1.setOnClickListener (new View.OnClickListener()  {
             @Override
             public void onClick(View v) {
-                Btn_1.setBackgroundColor(Color.YELLOW);
+
                 calendarMain.IS確認吃藥[day_3] = 1;
-                judge[day_3] =1;
+
+                if(judge[day_3] ==1){
+                    judge[day_3] =0;
+                    Btn_1.setBackgroundColor(Color.RED);}
+                else{
+                    judge[day_3] =1;
+                    Btn_1.setBackgroundColor(Color.YELLOW);}
 
                 btn_to_events=getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
                 for(int d=0;d< Integer.parseInt(event[0][1]);d++)

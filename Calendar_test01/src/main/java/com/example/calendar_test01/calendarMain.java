@@ -1,9 +1,12 @@
 package com.example.calendar_test01;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +28,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import static android.content.ContentValues.TAG;
 
 
 public class calendarMain extends AppCompatActivity {
@@ -193,12 +197,77 @@ public class calendarMain extends AppCompatActivity {
         showNextMonthBut.setOnClickListener(Right_Click);
 
 
-//---------------------------------------------------------演算
+//---------------------------------------------------------鈴聲
+        media_song = MediaPlayer.create(calendarMain.this,R.raw.alarm);
+        try {
+            if (media_song.isPlaying()) {
+                media_song.stop();
+            }
+        } catch (IllegalStateException e) {
+            Log.e(TAG, "stopOnlineMedia error=" + e.getMessage());
+        }
 
+//---------------------------------------------------------對話盒
+
+        altDlgBuilder = new AlertDialog.Builder(calendarMain.this);
+        altDlgBuilder.setTitle("確認是否吃藥");
+        altDlgBuilder.setMessage("今日是否已吃完藥了??");
+        altDlgBuilder.setIcon(android.R.drawable.ic_dialog_info);
+        altDlgBuilder.setCancelable(false);
+
+        altDlgBuilder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                judge[day_3] =1;
+                Log.e("abc","52555");
+                btn_to_events=getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
+                for(int d=0;d< Integer.parseInt(event[0][1]);d++)
+                {
+                    String JG = "jg"+String.valueOf(d);
+                    if(judge[d] ==1) {
+                        btn_to_events.edit().putInt(JG, 1).commit();
+                    }
+                    else
+                        btn_to_events.edit().putInt(JG,0).commit();
+                }
+            InitialComponent();
+            }
+
+        });
+
+        altDlgBuilder.setNegativeButton("否", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                judge[day_3] =0;
+                Log.e("abc","52555");
+                btn_to_events=getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
+                for(int d=0;d< Integer.parseInt(event[0][1]);d++)
+                {
+                    String JG = "jg"+String.valueOf(d);
+                    if(judge[d] ==1) {
+                        btn_to_events.edit().putInt(JG, 1).commit();
+                    }
+                    else
+                        btn_to_events.edit().putInt(JG,0).commit();
+                }
+                InitialComponent();
+
+            }
+        });
+
+        altDlgBuilder.setNeutralButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+//-----------------------------------------------------------演算
         event = new String[1][3];
         event[0][0]="2019/11/22";
         event[0][1]="28";
         event[0][2]="1";
+
 
 
         cal_catch_events =getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
@@ -213,7 +282,7 @@ public class calendarMain extends AppCompatActivity {
         Log.e("day31", String.valueOf(endjudge[1]));
         Log.e("day32", String.valueOf(endjudge[2]));
 
-        cal_to_events =getSharedPreferences("cal_Events", Activity.MODE_PRIVATE);
+        cal_to_events =getSharedPreferences("cal_Events",Activity.MODE_PRIVATE);
         SharedPreferences.Editor row= cal_to_events.edit();
         for(int d=0;d< Integer.parseInt(event[0][1]);d++)
         {
@@ -256,8 +325,17 @@ public class calendarMain extends AppCompatActivity {
                // Context context = getApplicationContext();
                 for (day_2 = 0; day_2 < IS日期長串顯示.length;day_2++) {
                     if (dateClicked.toString().compareTo(IS日期長串顯示[day_2]) == 0) {
-                        Intent intent = new Intent(calendarMain.this, Calendar_Button.class);
-                        startActivity(intent);
+                        btn_catch_events =getSharedPreferences("cal_Events", Activity.MODE_PRIVATE);
+                        judge = new int[Integer.parseInt(event[0][1])];
+                        for(int d=0;d< Integer.parseInt(event[0][1]);d++)
+                        {
+                            String AD = "ad"+String.valueOf(d);
+                            judge[d]= btn_catch_events.getInt(AD,0);
+                        }
+
+                        altDlgBuilder.show();
+                       // Intent intent = new Intent(calendarMain.this, Calendar_Button.class);
+                       // startActivity(intent);
                         day_3=day_2;
 
                     }
@@ -336,5 +414,10 @@ public class calendarMain extends AppCompatActivity {
     public int endjudge[];
 
     private NotificationManagerCompat notificationManager;
+    public static MediaPlayer media_song;
 
+    public SharedPreferences btn_catch_events;
+    public SharedPreferences btn_to_events;
+    public int judge[];
+    public AlertDialog.Builder altDlgBuilder;
 }
