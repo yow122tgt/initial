@@ -18,7 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class scan_MedicineDetail extends Activity {
-    private String showUri = "http://192.168.1.50/readMedicineDetailT.php";
+    private String showUri = "http://52.243.63.197/readMedicineDetailT.php";
     String result;
     com.android.volley.RequestQueue requestQueue;
 
@@ -50,13 +50,23 @@ public class scan_MedicineDetail extends Activity {
                     public void onResponse(JSONObject response) {
                         System.out.println(response.toString());
                         try {
-                            mTxtResult.setText(response.toString());
                             JSONArray data = response.getJSONArray("data");
                             for (int i = 0; i < data.length(); i++) {
                                 JSONObject jasondata = data.getJSONObject(i);
-                                String MB_ID = jasondata.getString("MB_ID");
-                                String MB_indication = jasondata.getString("MB_indication");
-                                result += MB_ID + MB_indication;
+                                String MB_ID = "藥袋_ID:" + jasondata.getString("MB_ID") + "\r\n";
+                                String MB_indication = "藥袋_適應症狀:" + jasondata.getString("MB_indication") + "\r\n";
+                                String MB_sied_effect = "藥袋_副作用:" + jasondata.getString("MB_sied_effect") + "\r\n";
+                                String MB_nickname = "藥袋_自定義名稱:" + jasondata.getString("MB_nickname") + "\r\n";
+                                String MB_image = "藥袋_圖片:" + jasondata.getString("MB_image") + "\r\n";
+                                String MB_pharmacy = "藥袋_診所:" + jasondata.getString("MB_pharmacy") + "\r\n";
+                                String MB_dosage = "藥袋_用法:" + jasondata.getString("MB_dosage") + "\r\n";
+                                String m_id = "會員_ID:" + jasondata.getString("m_id") + "\r\n";
+                                String d_id = "藥品_ID:" + jasondata.getString("d_id") + "\r\n";
+                                String MB_date = "藥袋_日期:" + jasondata.getString("MB_date") + "\r\n";
+                                String MB_days = "藥袋_天數:" + jasondata.getString("MB_days") + "\r\n";
+                                result += MB_ID + MB_indication + MB_sied_effect + MB_nickname + MB_image + MB_pharmacy + MB_dosage + m_id +
+                                        d_id + MB_date + MB_days;
+                                mTxtResult.setText(result);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
