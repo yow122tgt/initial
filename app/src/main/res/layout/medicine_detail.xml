@@ -16,12 +16,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:text="聖安健保-神經內科科診"
+        android:text=""
         android:layout_marginLeft="20sp"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
         android:layout_marginTop="15sp"
         android:textColor="#C20000"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/t3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="藥品名稱:"
+            android:layout_marginLeft="20sp"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:id="@+id/txt藥品名稱"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text=""
+            android:layout_marginLeft="10sp"
+            android:layout_gravity="center"
+
+            android:textColor="#3B3B3B"
+            android:textStyle="italic"
+
+            />
     </LinearLayout>
 <LinearLayout
     android:layout_width="match_parent"
@@ -33,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="調劑日期:"
+        android:text="服藥天數:"
         android:layout_marginLeft="20sp"
         android:layout_gravity="center"
         android:textColor="#000000"
@@ -43,11 +75,11 @@
 
 
     <TextView
-        android:id="@+id/txt調劑日期"
+        android:id="@+id/txt服藥天數"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="2019-11-08"
+        android:text=""
         android:layout_marginLeft="10sp"
         android:layout_gravity="center"
         android:textColor="#3B3B3B"
@@ -84,9 +116,7 @@ android:id="@+id/txt用法用量"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="口服
-每一天兩次，遵照醫師指示，共30天分
-早飯後1粒，午飯後1粒"
+        android:text=""
         android:layout_marginLeft="10sp"
 
         android:layout_gravity="center"
@@ -96,39 +126,7 @@ android:id="@+id/txt用法用量"
         />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-    <TextView
-        android:id="@+id/t3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="藥品名稱:"
-        android:layout_marginLeft="20sp"
-        android:layout_gravity="center"
-        android:textColor="#000000"
-        android:textStyle="bold"
 
-        />
-
-    <TextView
-android:id="@+id/txt藥品名稱"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="Parkryl(Selegiline)[5mg/tube]
-中文名:巴可癒錠"
-        android:layout_marginLeft="10sp"
-        android:layout_gravity="center"
-
-        android:textColor="#3B3B3B"
-        android:textStyle="italic"
-
-        />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -153,7 +151,7 @@ android:id="@+id/txt用途"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="巴金森氏症及其他相關症狀"
+        android:text=""
         android:layout_marginLeft="10sp"
         android:layout_gravity="center"
 
@@ -187,7 +185,7 @@ android:id="@+id/txt副作用"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="腸胃不適"
+        android:text=""
         android:layout_marginLeft="10sp"
 
         android:layout_gravity="center"
@@ -198,39 +196,7 @@ android:id="@+id/txt副作用"
         />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-    <TextView
-        android:id="@+id/t6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="藥品外觀:"
-        android:layout_marginLeft="20sp"
-        android:layout_gravity="center"
-        android:textColor="#000000"
-        android:textStyle="bold"
 
-        />
-
-    <TextView
-        android:id="@+id/txt藥品外觀"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="凹凸型、白色、錠劑"
-        android:layout_marginLeft="10sp"
-
-        android:layout_gravity="center"
-
-        android:textColor="#3B3B3B"
-        android:textStyle="italic"
-
-        />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -256,7 +222,7 @@ android:id="@+id/txt副作用"
         android:layout_width="200dp"
         android:layout_height="250sp"
 
-        android:background="@drawable/pa2"
+
         android:layout_marginLeft="15sp"
         />
     </LinearLayout>
