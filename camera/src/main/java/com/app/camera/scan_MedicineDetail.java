@@ -67,6 +67,7 @@ public class scan_MedicineDetail extends Activity {
                                 result += MB_ID + MB_indication + MB_sied_effect + MB_nickname + MB_image + MB_pharmacy + MB_dosage + m_id +
                                         d_id + MB_date + MB_days;
                                 mTxtResult.setText(result);
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
