@@ -1,11 +1,13 @@
-package com.example.login1;
+package medicineinfo;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MedicineDetail extends Activity {
+import com.example.login1.R;
+
+public class MedicineDetail6 extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,15 +16,15 @@ public class MedicineDetail extends Activity {
 
 
         InitialiComponent();
-        txt服藥天數.setText("28");
-        txt用法用量.setText("口服 (每天2次)早晚飯後服用");
-        txt藥品名稱.setText("RIVOTRIL 0.5MG 福利全");
-        txt用途.setText("緩和焦慮相關症狀、控制癲癇發作");
-        txt副作用.setText("疲倦、肌肉無力等等");
-        detailTitle.setText("聖安健保");
-        img藥袋外觀.setImageResource(R.drawable.mb4);
+        txt服藥天數.setText("7");
+        txt用法用量.setText("口服 每次1粒 每天3次 飯後");
+        txt藥品名稱.setText("0xethazine 5mg&polymigel 224mg");
+        txt用途.setText("胃炎、食道炎、及伴隨之胃病等胃部不適相關症狀");
+        txt副作用.setText("粉筆味");
+        detailTitle.setText("消化內科");
+        img藥袋外觀.setImageResource(R.drawable.mb5);
 
-      
+
     }
 
     private void InitialiComponent() {

@@ -1,11 +1,13 @@
-package com.example.login1;
+package medicineinfo;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MedicineDetail extends Activity {
+import com.example.login1.R;
+
+public class MedicineDetail3 extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,14 +17,14 @@ public class MedicineDetail extends Activity {
 
         InitialiComponent();
         txt服藥天數.setText("28");
-        txt用法用量.setText("口服 (每天2次)早晚飯後服用");
-        txt藥品名稱.setText("RIVOTRIL 0.5MG 福利全");
-        txt用途.setText("緩和焦慮相關症狀、控制癲癇發作");
-        txt副作用.setText("疲倦、肌肉無力等等");
-        detailTitle.setText("聖安健保");
-        img藥袋外觀.setImageResource(R.drawable.mb4);
+        txt用法用量.setText("口服 早上飯後服用(每天1次)");
+        txt藥品名稱.setText("APROVEL 150MG 安普諾維錠");
+        txt用途.setText("高血壓");
+        txt副作用.setText("頭暈、噁心");
+        detailTitle.setText("高血壓");
+        img藥袋外觀.setImageResource(R.drawable.mb2);
 
-      
+
     }
 
     private void InitialiComponent() {

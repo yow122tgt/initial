@@ -2,9 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -29,11 +27,10 @@
                 android:layout_below="@id/lblTitle"
                 android:gravity="center"
                 android:padding="20sp"
-                android:text="請平整放置藥袋後，從正上方拍照\n並使藥袋完整入鏡\n\n
-        1.呼叫相機APP，\n拍照後擷取為Bitmap\n\n
-        2.將Bitmap進行處理\n(灰階、對比、etc)後\n傳至雲端api進行辨識\n\n
-        3.辨識完成後\n將字串及圖檔傳至scan2，\n並依照各欄位顯示於畫面上\n\n
-        4.點擊確定後將資料寫進資料庫"
+                android:text="1.啟動相機\n\n
+        2.平整放置藥袋，使藥袋完整入鏡\n\n
+        3.按下拍照紐，等待系統進行文字辨識\n
+        4.辨識完成後對此筆藥單進行命名"
                 android:textSize="20sp" />
 
             <Button
@@ -45,6 +42,11 @@
                 android:layout_below="@id/lblManual"
                 android:text="啟動相機APP " />
 
+
         </RelativeLayout>
-    </ScrollView>
+
+
+
+
+
 </LinearLayout>

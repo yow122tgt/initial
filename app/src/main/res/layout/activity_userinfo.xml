@@ -110,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="0"
+            android:text="3"
             android:layout_marginLeft="10sp"
 
             android:layout_gravity="center"
@@ -153,147 +153,55 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         android:layout_marginTop="20sp">
-    <TextView
-        android:id="@+id/txt服用完畢"
+    <Button
+        android:id="@+id/btn服用完畢1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="聖安健保-神經內科科診"
+        android:text="消化內科"
         android:layout_marginLeft="10sp"
 
 
         android:layout_gravity="center"
 
-        android:textColor="#3B3B3B"
+        android:textColor="#FF0000"
         android:textStyle="italic"
 
         />
-
-        <TextView
-            android:id="@+id/txt服用完畢2"
+        <Button
+            android:id="@+id/btn服用完畢2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text=""
+            android:text="腦神經內科"
             android:layout_marginLeft="10sp"
-            android:layout_below="@+id/txt服用完畢"
-            android:layout_marginTop="15sp"
-
+android:layout_marginTop="50sp"
 
             android:layout_gravity="center"
 
-            android:textColor="#3B3B3B"
+            android:textColor="#FF0000"
             android:textStyle="italic"
 
             />
 
-        <TextView
-            android:id="@+id/txt服用完畢3"
+        <Button
+            android:id="@+id/btn服用完畢3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text=""
-            android:layout_marginLeft="10sp"
-            android:layout_below="@+id/txt服用完畢2"
-            android:layout_marginTop="15sp"
 
+            android:text="台北榮總醫院"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="100sp"
 
             android:layout_gravity="center"
 
-            android:textColor="#3B3B3B"
+            android:textColor="#FF0000"
             android:textStyle="italic"
 
             />
 
-        <TextView
-            android:id="@+id/txt服用完畢4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="2019-10-08 內科"
-            android:layout_marginLeft="10sp"
-            android:layout_below="@+id/txt服用完畢3"
-            android:layout_marginTop="15sp"
-            android:visibility="invisible"
 
-            android:layout_gravity="center"
-
-            android:textColor="#3B3B3B"
-            android:textStyle="italic"
-
-            />
-
-        <TextView
-            android:id="@+id/txt服用完畢5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="2019-10-08 內科"
-            android:layout_marginLeft="10sp"
-            android:layout_below="@+id/txt服用完畢4"
-            android:layout_marginTop="15sp"
-
-            android:visibility="invisible"
-            android:layout_gravity="center"
-
-            android:textColor="#3B3B3B"
-            android:textStyle="italic"
-
-            />
-
-        <TextView
-            android:id="@+id/txt服用完畢6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="2019-10-08 內科"
-            android:layout_marginLeft="10sp"
-            android:layout_below="@+id/txt服用完畢5"
-            android:layout_marginTop="15sp"
-            android:visibility="invisible"
-
-            android:layout_gravity="center"
-
-            android:textColor="#3B3B3B"
-            android:textStyle="italic"
-
-            />
-
-        <TextView
-            android:id="@+id/txt服用完畢7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="2019-10-08 內科"
-            android:layout_marginLeft="10sp"
-            android:layout_below="@+id/txt服用完畢6"
-            android:layout_marginTop="15sp"
-            android:visibility="invisible"
-
-            android:layout_gravity="center"
-
-            android:textColor="#3B3B3B"
-            android:textStyle="italic"
-
-            />
-
-        <TextView
-            android:id="@+id/txt服用完畢8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="2019-10-08 內科"
-            android:layout_marginLeft="10sp"
-            android:layout_below="@+id/txt服用完畢7"
-            android:layout_marginTop="15sp"
-android:visibility="invisible"
-
-            android:layout_gravity="center"
-
-            android:textColor="#3B3B3B"
-            android:textStyle="italic"
-
-            />
     </RelativeLayout>
 <!--    <RelativeLayout-->
 <!--        android:id="@+id/ll6"-->
