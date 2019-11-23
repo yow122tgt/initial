@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -24,12 +25,12 @@ public class Calendar_Button extends AppCompatActivity {
         setContentView(R.layout.activity_calendar__button);
 
         btn_catch_events =getSharedPreferences("cal_Events", Activity.MODE_PRIVATE);
+        judge = new int[Integer.parseInt(event[0][1])];
         for(int d=0;d< Integer.parseInt(event[0][1]);d++)
         {
-            judge = new int[Integer.parseInt(event[0][1])];
-            judge[d]= btn_catch_events.getInt("ad"+d,0);
+            String AD = "ad"+String.valueOf(d);
+            judge[d]= btn_catch_events.getInt(AD,0);
         }
-
 
 /*
         SharedPreferences.Editor row=events.edit();
@@ -50,10 +51,15 @@ public class Calendar_Button extends AppCompatActivity {
                 judge[day_3] =1;
 
                 btn_to_events=getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
-                SharedPreferences.Editor row=btn_to_events.edit();
                 for(int d=0;d< Integer.parseInt(event[0][1]);d++)
                 {
-                    row.putInt("jg"+d,judge[d]).commit();
+                    String JG = "jg"+String.valueOf(d);
+
+                    if(judge[d] ==1) {
+                        btn_to_events.edit().putInt(JG, 1).commit();
+                    }
+                    else
+                        btn_to_events.edit().putInt(JG,0).commit();
                 }
 
             }
