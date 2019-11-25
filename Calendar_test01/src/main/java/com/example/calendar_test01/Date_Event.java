@@ -20,7 +20,7 @@ import java.util.Date;
                 DEE= new String[要吃幾天];
                 //BB = new int[要吃幾天];
 
-                SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String str=藥單日期;
                 Date dt=sdf.parse(str);
                 Calendar rightNow = Calendar.getInstance();
