@@ -2,6 +2,8 @@ package com.app.camera;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -19,7 +21,7 @@ import org.json.JSONObject;
 
 public class scan_MedicineDetail extends Activity {
     private String showUri = "http://52.243.63.197/readMedicineDetailT.php";
-    String result, nickname;
+    String result, nickname, compressedPicPath;
     com.android.volley.RequestQueue requestQueue;
 
     @Override
@@ -31,6 +33,13 @@ public class scan_MedicineDetail extends Activity {
         Intent intent = getIntent();
         Bundle bund = intent.getExtras();
         nickname = bund.getString("nickname");
+        compressedPicPath = bund.getString("compressedPicPath");
+
+        detailTitle.setText(nickname);
+
+        Bitmap compressedBitmap = BitmapFactory.decodeFile(compressedPicPath);
+        img藥袋外觀.setImageBitmap(compressedBitmap);
+
         requestQueue = Volley.newRequestQueue(scan_MedicineDetail.this);
         testJSON();
     }
@@ -48,7 +57,7 @@ public class scan_MedicineDetail extends Activity {
     }
 
     public void testJSON() {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, showUri, null,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, showUri, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -82,7 +91,6 @@ public class scan_MedicineDetail extends Activity {
 
                                 //result += MB_ID + MB_indication + MB_sied_effect + MB_nickname + MB_image + MB_pharmacy + MB_dosage + m_id + d_id + MB_date + MB_days;
                                 //mTxtResult.setText(result);
-                                detailTitle.setText(nickname);
                                 txt調劑日期.setText(MB_date);
                                 txt用法用量.setText(MB_dosage);
                                 //txt藥品名稱.setText("");
@@ -109,6 +117,7 @@ public class scan_MedicineDetail extends Activity {
     TextView txt用途;
     TextView txt副作用;
     TextView txt藥品外觀;
-    TextView mTxtResult;
     ImageView img藥袋外觀;
+
+    TextView mTxtResult;
 }

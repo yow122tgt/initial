@@ -115,6 +115,7 @@ public class scan2 extends AppCompatActivity {
                         Intent intent_detail = new Intent(scan2.this, scan_MedicineDetail.class);
                         Bundle bund_detail = new Bundle();
                         bund_detail.putString("nickname", nickName);
+                        bund_detail.putString("compressedPicPath", compressedPicPath);
                         intent_detail.putExtras(bund_detail);
                         startActivity(intent_detail);
                     }
@@ -323,7 +324,7 @@ public class scan2 extends AppCompatActivity {
     Button mBtnApply, mBtnBack;
 
     public void traceOn() {
-        mEdtName.setText("PRIVOTRIL 0.5MG 福利全");
+        mEdtName.setText("RIVOTRIL 0.5MG 福利全");
         mEdtDays.setText("28");
         mEdtIndication.setText("緩和焦慮相關症狀、控制癲癇發作");
         mEdtDosage.setText("口服\n" +
