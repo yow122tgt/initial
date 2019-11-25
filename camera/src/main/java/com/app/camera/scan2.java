@@ -112,8 +112,11 @@ public class scan2 extends AppCompatActivity {
                         nickName = input.getText().toString();
                         uploadImage(compressedBitmap);
                         Toast.makeText(scan2.this, "新增藥單成功",Toast.LENGTH_SHORT).show();
-                        //startActivity(new Intent(scan2.this, scan1.class));
-                        finish();
+                        Intent intent_detail = new Intent(scan2.this, scan_MedicineDetail.class);
+                        Bundle bund_detail = new Bundle();
+                        bund_detail.putString("nickname", nickName);
+                        intent_detail.putExtras(bund_detail);
+                        startActivity(intent_detail);
                     }
                 });
                 dialog.show();
@@ -206,7 +209,7 @@ public class scan2 extends AppCompatActivity {
             String MB_nickname = nickName;//暱稱
             String MB_num = "1";//次數
             String MB_dosage = mEdtDosage.getText().toString();//總數量
-            String m_id = "102";
+            String m_id = "119";
             String d_id = "29";
             String MB_days = mEdtDays.getText().toString();//天數
             String MB_times = "3";
@@ -295,11 +298,10 @@ public class scan2 extends AppCompatActivity {
             Matcher m = pattern.matcher(paragraphText);
             daysText = m.toString();
             mEdtDays.setText(daysText);
-        } else if (p.indexOf("用法用量") != -1) {
-            dosageText = p.substring(p.indexOf("用法") + "用法用量".length(),
-                    p.indexOf("服用") + "服用".length());
+        } else if (p.indexOf("用法") != -1) {
+            dosageText = p.substring(p.indexOf("用法") + "用法用量".length());
         } else if (p.indexOf("次") != -1) {
-            dosageText += p.substring(p.indexOf("每次"));
+            dosageText += p.substring(p.indexOf("次")-1);
             mEdtDosage.setText(dosageText);
         } else if (p.indexOf("適應症") != -1) {
             indicationText = p.substring(p.indexOf("適應症") + "適應症".length());
