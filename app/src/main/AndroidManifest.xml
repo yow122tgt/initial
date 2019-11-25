@@ -21,6 +21,7 @@
         <activity android:name="medicineinfo.MedicineDetail4" />
         <activity android:name="medicineinfo.MedicineDetail5" />
         <activity android:name="medicineinfo.MedicineDetail6" />
+        <activity android:name=".news" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".confirmpassword" />

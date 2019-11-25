@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -67,6 +68,8 @@ public class MenuActivity extends AppCompatActivity {
     private View.OnClickListener btnNews_click =new View.OnClickListener(){
         @Override
         public void onClick(View v) {
+            Log.d("test1","test");
+            startActivity(new Intent (MenuActivity.this, news.class));
 
         }
     };
