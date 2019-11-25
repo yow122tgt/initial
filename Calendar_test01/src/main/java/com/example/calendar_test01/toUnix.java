@@ -13,7 +13,7 @@ public class toUnix {
     {
         {
             try {
-                epoch = new SimpleDateFormat("yyyy/MM/dd").parse(s).getTime();
+                epoch = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(s).getTime();
             } catch (ParseException e) {
                 e.printStackTrace();
             }

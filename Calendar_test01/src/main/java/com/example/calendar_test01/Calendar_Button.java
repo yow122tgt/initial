@@ -15,7 +15,7 @@ import static com.example.calendar_test01.calendarMain.*;
 import static com.example.calendar_test01.calendarMain.day_3;
 
 
-public class Calendar_Button extends AppCompatActivity {
+/*public class Calendar_Button extends AppCompatActivity {
 
     private Button Btn_1 ;
 
@@ -35,7 +35,7 @@ public class Calendar_Button extends AppCompatActivity {
 /*
         SharedPreferences.Editor row=events.edit();
         row.putInt("ad"+day_3,1).commit();
-*/
+
 
         Btn_1 = (Button) findViewById(R.id.btn);
 
@@ -76,4 +76,4 @@ public class Calendar_Button extends AppCompatActivity {
     public SharedPreferences btn_to_events;
     public int judge[];
 
-}
+}*/

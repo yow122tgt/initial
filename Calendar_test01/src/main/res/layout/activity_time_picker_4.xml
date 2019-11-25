@@ -23,7 +23,7 @@
         android:layout_below="@id/timePicker"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:text="設定"
+        android:text="Turn on Alarm"
         android:textSize="20sp" />
 
     <Button
@@ -34,7 +34,7 @@
         android:layout_alignEnd="@+id/timePicker"
         android:layout_alignRight="@+id/timePicker"
         android:layout_gravity="right"
-        android:text="取消"
+        android:text="Turn off Alarm"
         android:textSize="20sp" />
 
     <TextView

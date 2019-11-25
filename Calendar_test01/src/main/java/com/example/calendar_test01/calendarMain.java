@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
@@ -19,8 +20,17 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -32,7 +42,9 @@ import static android.content.ContentValues.TAG;
 
 
 public class calendarMain extends AppCompatActivity {
-
+    private String showUri = "http://52.243.63.197/readMedicineDetailT.php";
+    String result;
+    com.android.volley.RequestQueue requestQueue;
 
 
     private View.OnClickListener btn_timepicker_1_Click =new View.OnClickListener() {
@@ -174,6 +186,10 @@ public class calendarMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendarmain);
+
+        requestQueue = Volley.newRequestQueue(calendarMain.this);
+        //testJSON();
+
         InitialComponent();
         TimeStart();
     }
@@ -181,14 +197,14 @@ public class calendarMain extends AppCompatActivity {
     private void InitialComponent() {
 
         compactCalendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
-        compactCalendarView.setLocale(TimeZone.getTimeZone("GMT 08:00"),Locale.CHINESE);
+        compactCalendarView.setLocale(TimeZone.getTimeZone("GMT 08:00"), Locale.CHINESE);
         compactCalendarView.setUseThreeLetterAbbreviation(true);
         compactCalendarView.displayOtherMonthDays(true);
         compactCalendarView.setSelected(true);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("    "+dateFormatMonth.format(compactCalendarView.getFirstDayOfCurrentMonth()));
+        getSupportActionBar().setTitle("    " + dateFormatMonth.format(compactCalendarView.getFirstDayOfCurrentMonth()));
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         showPreviousMonthBut = (Button) findViewById(R.id.prev_button);
@@ -198,7 +214,7 @@ public class calendarMain extends AppCompatActivity {
 
 
 //---------------------------------------------------------鈴聲
-        media_song = MediaPlayer.create(calendarMain.this,R.raw.alarm);
+        media_song = MediaPlayer.create(calendarMain.this, R.raw.alarm);
         try {
             if (media_song.isPlaying()) {
                 media_song.stop();
@@ -218,19 +234,17 @@ public class calendarMain extends AppCompatActivity {
         altDlgBuilder.setPositiveButton("是", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                judge[day_3] =1;
-                Log.e("abc","52555");
-                btn_to_events=getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
-                for(int d=0;d< Integer.parseInt(event[0][1]);d++)
-                {
-                    String JG = "jg"+String.valueOf(d);
-                    if(judge[d] ==1) {
+                judge[day_3] = 1;
+                Log.e("abc", "52555");
+                btn_to_events = getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
+                for (int d = 0; d < Integer.parseInt(event[2][1]); d++) {
+                    String JG = "jg" + String.valueOf(d);
+                    if (judge[d] == 1) {
                         btn_to_events.edit().putInt(JG, 1).commit();
-                    }
-                    else
-                        btn_to_events.edit().putInt(JG,0).commit();
+                    } else
+                        btn_to_events.edit().putInt(JG, 0).commit();
                 }
-            InitialComponent();
+                InitialComponent();
             }
 
         });
@@ -238,17 +252,15 @@ public class calendarMain extends AppCompatActivity {
         altDlgBuilder.setNegativeButton("否", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                judge[day_3] =0;
-                Log.e("abc","52555");
-                btn_to_events=getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
-                for(int d=0;d< Integer.parseInt(event[0][1]);d++)
-                {
-                    String JG = "jg"+String.valueOf(d);
-                    if(judge[d] ==1) {
+                judge[day_3] = 0;
+                Log.e("abc", "52555");
+                btn_to_events = getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
+                for (int d = 0; d < Integer.parseInt(event[2][1]); d++) {
+                    String JG = "jg" + String.valueOf(d);
+                    if (judge[d] == 1) {
                         btn_to_events.edit().putInt(JG, 1).commit();
-                    }
-                    else
-                        btn_to_events.edit().putInt(JG,0).commit();
+                    } else
+                        btn_to_events.edit().putInt(JG, 0).commit();
                 }
                 InitialComponent();
 
@@ -263,61 +275,59 @@ public class calendarMain extends AppCompatActivity {
         });
 
 //-----------------------------------------------------------演算
-        event = new String[1][3];
-        event[0][0]="2019/11/22";
-        event[0][1]="28";
-        event[0][2]="1";
+        event = new String[3][3];
+        event[0][0] = "2019-9-15 00:00:00";
+        event[0][1] = "5";
+        event[0][2] = "3";
+         event[1][0] = "2019-10-10 00:00:00";
+        event[1][1] = "10";
+        event[1][2] = "2";
+        event[2][0] = "2019-11-10 00:00:00";
+        event[2][1] = "22";
+        event[2][2] = "1";
 
+         for (int i = 0; i < 3; i++) {
 
+        cal_catch_events = getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
+        endjudge = new int[Integer.parseInt(event[i][1])];
 
-        cal_catch_events =getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
-        endjudge = new int[Integer.parseInt(event[0][1])];
-
-        for(int d=0;d< Integer.parseInt(event[0][1]);d++)
-        {
-            String JG = "jg"+String.valueOf(d);
-            endjudge[d]= cal_catch_events.getInt(JG,0);
-        }
-        Log.e("day30", String.valueOf(endjudge[0]));
-        Log.e("day31", String.valueOf(endjudge[1]));
-        Log.e("day32", String.valueOf(endjudge[2]));
-
-        cal_to_events =getSharedPreferences("cal_Events",Activity.MODE_PRIVATE);
-        SharedPreferences.Editor row= cal_to_events.edit();
-        for(int d=0;d< Integer.parseInt(event[0][1]);d++)
-        {
-            String AD = "ad"+String.valueOf(d);
-            row.putInt(AD,endjudge[d]).commit();
+        for (int d = 0; d < Integer.parseInt(event[i][1]); d++) {
+            String JG = "jg" + String.valueOf(d);
+            endjudge[d] = cal_catch_events.getInt(JG, 0);
         }
 
+        cal_to_events = getSharedPreferences("cal_Events", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor row = cal_to_events.edit();
+        for (int d = 0; d < Integer.parseInt(event[i][1]); d++) {
+            String AD = "ad" + String.valueOf(d);
+            row.putInt(AD, endjudge[d]).commit();
+        }
 
 
         try {
-            IS事件日期 = new Date_Event(event[0][0] , Integer.parseInt(event[0][1]) ,Integer.parseInt(event[0][2]) /*,dd*/).dayday;
-            IS日期長串顯示 = new Date_Event(event[0][0] , Integer.parseInt(event[0][1]) ,Integer.parseInt(event[0][2]) /*,dd*/).DEE;
-            IS確認吃藥 = new int[Integer.parseInt(event[0][1])];
+            IS事件日期 = new Date_Event(event[i][0], Integer.parseInt(event[i][1]), Integer.parseInt(event[i][2]) /*,dd*/).dayday;
+            IS日期長串顯示 = new Date_Event(event[2][0], Integer.parseInt(event[2][1]), Integer.parseInt(event[2][2]) /*,dd*/).DEE;
+            IS確認吃藥 = new int[Integer.parseInt(event[i][1])];
             IS確認吃藥 = endjudge;
-            Log.e("789","77777777");
         } catch (Exception e) {
             e.printStackTrace();
         }
+
 //-------------------------------------------------------在行事曆上顯示顏色
 
-        for( day_1 =0;day_1<IS事件日期.length;day_1++) {
+        for (day_1 = 0; day_1 < IS事件日期.length; day_1++) {
             date = new toUnix(IS事件日期[day_1]).epoch;
-            Log.e("789",String.valueOf(date));
-            if(endjudge[day_1]==1){
+            if (endjudge[day_1] == 1) {
                 Event ev1 = new Event(Color.GREEN, date, "已吃完藥");
-                Log.e("789","6666666666");
                 compactCalendarView.addEvent(ev1);
-            }
-            else{
+            } else {
                 Event ev1 = new Event(Color.RED, date, "未吃完藥");
-                Log.e("789","5555555555");
                 compactCalendarView.addEvent(ev1);
             }
 
         }
+             //-----------
+    }
 //-----------------------------------------------------點擊有事件日期顯示Calendar_Button.class
         compactCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
@@ -326,12 +336,11 @@ public class calendarMain extends AppCompatActivity {
                 for (day_2 = 0; day_2 < IS日期長串顯示.length;day_2++) {
                     if (dateClicked.toString().compareTo(IS日期長串顯示[day_2]) == 0) {
                         btn_catch_events =getSharedPreferences("cal_Events", Activity.MODE_PRIVATE);
-                        judge = new int[Integer.parseInt(event[0][1])];
-                        for(int d=0;d< Integer.parseInt(event[0][1]);d++)
-                        {
-                            String AD = "ad"+String.valueOf(d);
-                            judge[d]= btn_catch_events.getInt(AD,0);
-                        }
+                            judge = new int[Integer.parseInt(event[2][1])];
+                            for (int d = 0; d < Integer.parseInt(event[2][1]); d++) {
+                                String AD = "ad" + String.valueOf(d);
+                                judge[d] = btn_catch_events.getInt(AD, 0);
+                            }
 
                         altDlgBuilder.show();
                        // Intent intent = new Intent(calendarMain.this, Calendar_Button.class);
@@ -391,7 +400,45 @@ public class calendarMain extends AppCompatActivity {
 
     }
 
+//-------------------------------------------------------------------------------------------------------------------------
+    /*public void testJSON() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, showUri, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        event = new String[1][3];
+                        try {
+                            JSONArray data = response.getJSONArray("data");
+                            for (int i = 0; i < 1; i++) {
+                                JSONObject jasondata = data.getJSONObject(i);
+                               // String MB_ID = "藥袋_ID:" + jasondata.getString("MB_ID") + "\r\n";
+                               // String MB_days = "藥袋_天數:" + jasondata.getString("MB_days") + "\r\n";
+                               // String MB_date = "藥袋_日期:" + jasondata.getString("MB_date") + "\r\n";
+                               // result +=  MB_days + MB_date;
+                                // TV.setText(result);
+                                event[i][0] = jasondata.getString("MB_date");
+                                event[i][1] = jasondata.getString("MB_days");
+                                event[i][2] ="1";
+                               btn_timepicker_1.setText(event[i][0]);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Log.d("de","nonResponse");
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.append(error.getMessage());
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }*/
 
+//------------------------------------------------------------------------------------------------------
+
+
+    //------------------------------------------------------------------
     private CompactCalendarView compactCalendarView;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMM- yyyy", Locale.CHINESE);
     private Calendar currentCalender = Calendar.getInstance(Locale.getDefault());
@@ -420,4 +467,6 @@ public class calendarMain extends AppCompatActivity {
     public SharedPreferences btn_to_events;
     public int judge[];
     public AlertDialog.Builder altDlgBuilder;
+
+
 }
