@@ -24,7 +24,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:text="Turn on Alarm"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/alarm_off"
@@ -35,7 +35,7 @@
         android:layout_alignRight="@+id/timePicker"
         android:layout_gravity="right"
         android:text="Turn off Alarm"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/update_text"
