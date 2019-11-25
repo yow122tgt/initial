@@ -94,7 +94,7 @@ public class scan2 extends AppCompatActivity {
             EditText input = new EditText(scan2.this);
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(scan2.this);
+                final AlertDialog.Builder dialog = new AlertDialog.Builder(scan2.this);
                 dialog.setView(input);
                 dialog.setTitle("請輸入藥袋名稱");
                 dialog.setMessage("是否確定新增？");
@@ -110,14 +110,17 @@ public class scan2 extends AppCompatActivity {
                     public void onClick(DialogInterface arg0, int arg1) {
                         // TODO Auto-generated method stub
                         nickName = input.getText().toString();
-                        uploadImage(compressedBitmap);
-                        Toast.makeText(scan2.this, "新增藥單成功",Toast.LENGTH_SHORT).show();
-                        Intent intent_detail = new Intent(scan2.this, scan_MedicineDetail.class);
-                        Bundle bund_detail = new Bundle();
-                        bund_detail.putString("nickname", nickName);
-                        bund_detail.putString("compressedPicPath", compressedPicPath);
-                        intent_detail.putExtras(bund_detail);
-                        startActivity(intent_detail);
+                        if (nickName != null) {
+                            uploadImage(compressedBitmap);
+                            Toast.makeText(scan2.this, "新增藥單成功", Toast.LENGTH_SHORT).show();
+                            Intent intent_detail = new Intent(scan2.this, scan_MedicineDetail.class);
+                            Bundle bund_detail = new Bundle();
+                            bund_detail.putString("nickname", nickName);
+                            bund_detail.putString("compressedPicPath", compressedPicPath);
+                            intent_detail.putExtras(bund_detail);
+                            startActivity(intent_detail);
+                            finish();
+                        }
                     }
                 });
                 dialog.show();

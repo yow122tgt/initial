@@ -19,6 +19,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class scan_MedicineDetail extends Activity {
     private String showUri = "http://52.243.63.197/readMedicineDetailT.php";
     String result, nickname, compressedPicPath;
@@ -57,6 +60,8 @@ public class scan_MedicineDetail extends Activity {
     }
 
     public void testJSON() {
+        //Map<String, String> params = new HashMap<String, String>();
+        //params.put("tag", "test");
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, showUri, null,
                 new Response.Listener<JSONObject>() {
                     @Override
