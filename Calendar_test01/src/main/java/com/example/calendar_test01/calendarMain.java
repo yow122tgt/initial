@@ -11,8 +11,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
@@ -347,7 +349,6 @@ public class calendarMain extends AppCompatActivity {
                         //Intent intent = new Intent(calendarMain.this, Calendar_Button.class);
                         //startActivity(intent);
                         day_3=day_2;
-
                     }
                 }
             }

@@ -98,6 +98,7 @@ public class scan2 extends AppCompatActivity {
                 dialog.setView(input);
                 dialog.setTitle("請輸入藥袋名稱");
                 dialog.setMessage("是否確定新增？");
+                dialog.setCancelable(false);
                 dialog.setNegativeButton("取消",new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
