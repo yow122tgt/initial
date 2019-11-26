@@ -227,7 +227,7 @@ public class calendarMain extends AppCompatActivity {
 
 //---------------------------------------------------------對話盒
 
-        AlertDialog.Builder altDlgBuilder = new AlertDialog.Builder(this);
+        altDlgBuilder = new AlertDialog.Builder(calendarMain.this);
         altDlgBuilder.setTitle("確認是否吃藥");
         altDlgBuilder.setMessage("今日是否已吃完藥了??");
         altDlgBuilder.setIcon(android.R.drawable.ic_dialog_info);
@@ -276,7 +276,7 @@ public class calendarMain extends AppCompatActivity {
             }
         });
 
-        dialog = altDlgBuilder.create();
+
 
 //-----------------------------------------------------------演算
         event = new String[3][3];
@@ -345,7 +345,7 @@ public class calendarMain extends AppCompatActivity {
                                 String AD = "ad" + String.valueOf(d);
                                 judge[d] = btn_catch_events.getInt(AD, 0);
                             }
-                        dialog.show();
+                        altDlgBuilder.show();
                         //Intent intent = new Intent(calendarMain.this, Calendar_Button.class);
                         //startActivity(intent);
                         day_3=day_2;
@@ -469,6 +469,6 @@ public class calendarMain extends AppCompatActivity {
     public SharedPreferences btn_to_events;
     public int judge[];
     //public AlertDialog.Builder altDlgBuilder;
-    private AlertDialog dialog;
+    public AlertDialog.Builder altDlgBuilder;
 
 }
