@@ -104,6 +104,7 @@ public class scan2 extends AppCompatActivity {
                     public void onClick(DialogInterface arg0, int arg1) {
                         // TODO Auto-generated method stub
                         Toast.makeText(scan2.this, "已取消",Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 });
                 dialog.setPositiveButton("確定新增",new DialogInterface.OnClickListener() {
