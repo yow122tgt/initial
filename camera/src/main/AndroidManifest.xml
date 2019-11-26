@@ -23,7 +23,8 @@
         </provider>
 
         <activity android:name=".scan_MedicineDetail" />
-        <activity android:name=".scan2" />
+        <activity android:name=".scan2"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".scan1">
 
         </activity>
