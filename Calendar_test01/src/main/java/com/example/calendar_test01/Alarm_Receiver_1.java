@@ -43,6 +43,9 @@ public class Alarm_Receiver_1 extends BroadcastReceiver {
         bund.putString("extra01",get_your_string);
         service_intent.putExtras(bund);*/
         Log.e("What is the key?",get_your_string);
+        if (calendarMain.media_song.isPlaying()) {
+            calendarMain.media_song.stop();
+        }
 
        // context.startService(service_intent);
         String state = intent.getExtras().getString("extra");

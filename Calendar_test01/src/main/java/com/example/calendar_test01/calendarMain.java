@@ -130,6 +130,14 @@ public class calendarMain extends AppCompatActivity {
         else
             btn_timepicker_4.setTextColor(Color.BLACK);
 
+        try {
+            if (media_song.isPlaying()) {
+                media_song.stop();
+            }
+        } catch (IllegalStateException e) {
+            Log.e(TAG, "stopOnlineMedia error=" + e.getMessage());
+        }
+
         InitialComponent();
 //------------------------------------------------------------------------------------------------
 /*
@@ -189,8 +197,17 @@ public class calendarMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendarmain);
 
-        requestQueue = Volley.newRequestQueue(calendarMain.this);
+        //requestQueue = Volley.newRequestQueue(calendarMain.this);
         //testJSON();
+        media_song = MediaPlayer.create(calendarMain.this, R.raw.alarm);
+        try {
+            if (media_song.isPlaying()) {
+                media_song.stop();
+            }
+        } catch (IllegalStateException e) {
+            Log.e(TAG, "stopOnlineMedia error=" + e.getMessage());
+        }
+
 
         InitialComponent();
         TimeStart();
@@ -255,7 +272,6 @@ public class calendarMain extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 judge[day_3] = 0;
-                Log.e("abc", "52555");
                 btn_to_events = getSharedPreferences("btn_Events", Activity.MODE_PRIVATE);
                 for (int d = 0; d < Integer.parseInt(event[2][1]); d++) {
                     String JG = "jg" + String.valueOf(d);
@@ -280,13 +296,13 @@ public class calendarMain extends AppCompatActivity {
 
 //-----------------------------------------------------------演算
         event = new String[3][3];
-        event[0][0] = "2019-9-15 00:00:00";
-        event[0][1] = "5";
+        event[0][0] = "2019-9-15 10:00:00";
+        event[0][1] = "8";
         event[0][2] = "3";
-         event[1][0] = "2019-10-10 00:00:00";
+         event[1][0] = "2019-10-10 10:00:00";
         event[1][1] = "10";
         event[1][2] = "2";
-        event[2][0] = "2019-11-10 00:00:00";
+        event[2][0] = "2019-11-10 10:00:00";
         event[2][1] = "22";
         event[2][2] = "1";
 
@@ -297,7 +313,8 @@ public class calendarMain extends AppCompatActivity {
 
         for (int d = 0; d < Integer.parseInt(event[i][1]); d++) {
             String JG = "jg" + String.valueOf(d);
-            endjudge[d] = cal_catch_events.getInt(JG, 0);
+            endjudge[d] = cal_catch_events.getInt(JG, 1);
+
         }
 
         cal_to_events = getSharedPreferences("cal_Events", Activity.MODE_PRIVATE);
@@ -337,8 +354,8 @@ public class calendarMain extends AppCompatActivity {
             @Override
             public void onDayClick(Date dateClicked) {
                // Context context = getApplicationContext();
-                for (day_2 = 0; day_2 < IS日期長串顯示.length;day_2++) {
-                    if (dateClicked.toString().compareTo(IS日期長串顯示[day_2]) == 0) {
+               for (day_2 = 0; day_2 < IS日期長串顯示.length;day_2++) {
+                    if (dateClicked.toString().substring(0,11).compareTo(IS日期長串顯示[day_2].toString().substring(0,11)) == 0) {
                         btn_catch_events =getSharedPreferences("cal_Events", Activity.MODE_PRIVATE);
                             judge = new int[Integer.parseInt(event[2][1])];
                             for (int d = 0; d < Integer.parseInt(event[2][1]); d++) {
