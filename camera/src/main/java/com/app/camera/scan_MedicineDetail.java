@@ -49,7 +49,7 @@ public class scan_MedicineDetail extends Activity {
 
     private void MedicineDetailComponent() {
         detailTitle=findViewById(R.id.detailTitle);
-        txt調劑日期=findViewById(R.id.txt調劑日期);
+        //txt調劑日期=findViewById(R.id.txt調劑日期);
         txt用法用量=findViewById(R.id.txt用法用量);
         txt用途=findViewById(R.id.txt用途);
         txt副作用=findViewById(R.id.txt副作用);
@@ -96,11 +96,11 @@ public class scan_MedicineDetail extends Activity {
 
                                 //result += MB_ID + MB_indication + MB_sied_effect + MB_nickname + MB_image + MB_pharmacy + MB_dosage + m_id + d_id + MB_date + MB_days;
                                 //mTxtResult.setText(result);
-                                txt調劑日期.setText(MB_date);
+                                //txt調劑日期.setText(MB_date);
                                 txt用法用量.setText(MB_dosage);
                                 //txt藥品名稱.setText("");
-                                txt用途.setText(MB_indication);
-                                txt副作用.setText(MB_sied_effect);
+                                //txt用途.setText(MB_indication);
+                                //txt副作用.setText(MB_sied_effect);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
