@@ -32,8 +32,14 @@ public class news extends Activity {
 
         webview.setWebViewClient(new WebViewClient());
         webview.loadUrl("http://104.41.183.184/web/index.html");
-//        setContentView(webview);
+        setContentView(webview);
 
+        webSettings.setUseWideViewPort(true); //将图片调整到适合webview的大小
+        webSettings.setLoadWithOverviewMode(true); // 缩放至屏幕的大小
+        //缩放操作
+        webSettings.setSupportZoom(true); //支持缩放，默认为true。是下面那个的前提。
+        webSettings.setBuiltInZoomControls(true); //设置内置的缩放控件。若为false，则该WebView不可缩放
+        webSettings.setDisplayZoomControls(false); //隐藏原生的缩放控件
 
 
 
